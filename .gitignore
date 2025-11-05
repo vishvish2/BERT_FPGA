@@ -1,0 +1,23 @@
+# Quartus generated files
+simulation/
+output_files/
+incremental_db/
+greybox_tmp/
+db/
+
+# Reports and temporary files
+*.rpt
+*.summary
+*.qws
+*.bak
+*.done
+*.smsg
+*.pin
+*.sld
+*.chg
+*.html
+*.htm
+
+# Simulator files
+*.vwf
+*.sft
