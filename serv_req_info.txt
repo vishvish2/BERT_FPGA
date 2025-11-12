@@ -6,3 +6,11 @@
 	<version>Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition</version>
 </internal_error>
 
+<internal_error>
+	<executable>quartus</executable>
+	<sub_system>MEM</sub_system>
+	<error>*** Fatal Error: Out of memory in module quartus (1017 megabytes used)</error>
+	<date>Wed Nov 12 16:31:36 2025</date>
+	<version>Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition</version>
+</internal_error>
+
