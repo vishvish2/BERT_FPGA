@@ -55,6 +55,22 @@ on the Quartus Prime software download page.
 	(annotation_block (location)(rect -144 320 -88 336))
 )
 (pin
+	(input)
+	(rect 64 400 232 416)
+	(text "INPUT" (rect 125 0 153 9)(font "Arial" (font_size 6)))
+	(text "PRBS_Tx_IN" (rect 5 0 69 11)(font "Arial" ))
+	(pt 168 8)
+	(drawing
+		(line (pt 84 12)(pt 109 12))
+		(line (pt 84 4)(pt 109 4))
+		(line (pt 113 8)(pt 168 8))
+		(line (pt 84 12)(pt 84 4))
+		(line (pt 109 4)(pt 113 8))
+		(line (pt 109 12)(pt 113 8))
+	)
+	(text "VCC" (rect 128 7 148 16)(font "Arial" (font_size 6)))
+)
+(pin
 	(output)
 	(rect 744 216 920 232)
 	(text "OUTPUT" (rect 1 0 39 9)(font "Arial" (font_size 6)))
@@ -70,6 +86,22 @@ on the Quartus Prime software download page.
 		(line (pt 78 12)(pt 82 8))
 	)
 	(annotation_block (location)(rect 896 232 952 248))
+)
+(pin
+	(output)
+	(rect 304 400 480 416)
+	(text "OUTPUT" (rect 1 0 39 9)(font "Arial" (font_size 6)))
+	(text "PRBS_Tx_OUT" (rect 90 0 161 12)(font "Intel Clear" ))
+	(pt 0 8)
+	(drawing
+		(line (pt 0 8)(pt 52 8))
+		(line (pt 52 4)(pt 78 4))
+		(line (pt 52 12)(pt 78 12))
+		(line (pt 52 12)(pt 52 4))
+		(line (pt 78 4)(pt 82 8))
+		(line (pt 82 8)(pt 78 12))
+		(line (pt 78 12)(pt 82 8))
+	)
 )
 (symbol
 	(rect 104 200 168 280)
@@ -745,6 +777,10 @@ on the Quartus Prime software download page.
 (connector
 	(pt -40 152)
 	(pt -40 232)
+)
+(connector
+	(pt 232 408)
+	(pt 304 408)
 )
 (junction (pt 312 296))
 (junction (pt 400 296))
