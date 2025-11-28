@@ -2,6 +2,7 @@
 \usepackage{graphicx} % Required for inserting images
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath}
+\usepackage{hyperref}
 
 \begin{document}
 
@@ -21,26 +22,29 @@
         \date{\today}
     \end{center}
 
-    \clearpage
-    \tableofcontents
+\end{titlepage}
 
     \clearpage
-    \section{Declaration}
         I have read and understood UCL's and the Department's statements and guidelines concerning plagiarism.\\[0.5cm]
         I declare that all material described in this report is my own work except where explicitly and individually indicated in the text.
         This includes ideas described in the text, figures and computer programs.\\[0.5cm]
         This report contains \_ pages (excluding this page and the appendices) and \_ words.\\[0.5cm]
         % TODO Fill these in at the end
         Signed: 
-
+    
     \clearpage
-    \section{Project Description}
-        A Bit Error Rate Test set (BERT) is used for testing the performance of a digital communication system. All communication channels are susceptible to incorrectly transmitting a bit in a stream of data as a result of noise or interference.
+    \tableofcontents   
 
+    \section{Project Description}
+        Channels for digital communication as susceptible to incorrect data transmission arising due many possible factors such as noise or interference.\cite{SMJAlam2011}
+        Communication networks are continously expanding in capacity and speed and being able to ensure data integrity is paramount.
+        The most common example of such a system is the internet, which uses undersea optical fibres for data transmission.
+        This project aims to construct a system that can 
     
     \section{Literature Review}
-        
 
-\end{titlepage}
+    \bibliographystyle{IEEEtran} % IEEE style
+    \bibliography{references}
+        
 
 \end{document}
