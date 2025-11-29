@@ -36,12 +36,21 @@
     \tableofcontents   
 
     \section{Project Description}
-        Communication networks are continously expanding in capacity and speed and being able to ensure data integrity is paramount.
+        Communication networks are continously expanding in capacity and speed and being able to ensure signal integrity is paramount.
         The most common example of such a system is the internet, which uses undersea optical fibres for data transmission.
-        (Ramble about the impact of the internet here)
+        Such networks have become a central component in the modern day world with applications in many important industries, such as telecommucations, cloud services, banking, healthcare and transportation.
+        In accordance with these advancements, techniques to measure the performance of communication channels have evolved.
         Channels for digital communication as susceptible to incorrect data transmission arising due many possible factors such as noise or interference.
         A metric of performance for digital communication channels is the Bit Error Rate (BER) which can be characterised via a Bit Error Rate Test (BERT).~\cite{SMJAlam2011}
-        This project aims to construct a system that can (describe project) 
+
+        The BER of a communication channels is the proportion of bits in a data transmission which have an error.
+        When data has bit errors its requires either retransmission and/or extra processing from error correction algorithms.
+        A high BER would have signficant impacts on the channel's datarate capability.~\cite{SMJAlam2011}
+        Being able to measure this is important in ensuring a channel can transmit data quickly and efficiently.
+        Unfortunately, systems that can measure the BER can be expensive and would be designed for data rates in the Gb/s range.
+        As a result acquiring such equipment could prove difficult and would be excessive since such high data rates aren't always required.~\cite{MJBasford2020}
+        
+        This project aims to construct a system that can accurately measure the BER of a communication channel in the Mb/s range of data rates at relatively low cost.
     
     \section{Literature Review}
 
