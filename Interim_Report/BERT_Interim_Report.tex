@@ -3,16 +3,6 @@
 \usepackage[margin=1in]{geometry} % 1 inch margins
 \usepackage{amsmath} % Equations
 \usepackage{hyperref} % For links
-\usepackage{totcount}
-\usepackage{everypage}
-
-% Counts no. of pages
-\newcounter{mainpages}
-\regtotcounter{mainpages}
-
-\AddEverypageHook{%
-  \stepcounter{mainpages}%
-}
 
 \begin{document}
 
@@ -38,7 +28,7 @@
         I have read and understood UCL's and the Department's statements and guidelines concerning plagiarism.\\[0.5cm]
         I declare that all material described in this report is my own work except where explicitly and individually indicated in the text.
         This includes ideas described in the text, figures and computer programs.\\[0.5cm]
-        This report contains \total{mainpages} pages (excluding this page and the appendices) and \_ words.\\[0.5cm]
+        This report contains \_ pages (excluding this page and the appendices) and \_ words.\\[0.5cm]
         % TODO Fill these in at the end
         Signed: Vishnu Barath \hfill Date: \date{\today}
     
@@ -63,9 +53,7 @@
         This project aims to construct a system that can accurately measure the BER of a communication channel in the Mb/s range of data rates at relatively low cost.
     
     \section{Literature Review}
-
-    % Exclude references and appendices from page count
-    \AddEverypageHook{}
+        Building a system to measure a channel's BER can be done via any programmable device such as Microcontrollers or Field Programmable Gate Arrays (FPGA).
 
     \bibliographystyle{IEEEtran} % IEEE style
     \bibliography{references}
