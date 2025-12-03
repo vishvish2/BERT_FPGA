@@ -79,6 +79,15 @@
             As a result of using a periodic square wave, the issue of synchronising the transmitted and received bitstreams is simplified.
             This system has significantly lower cost and complexity in comparison to FPGA equivalents.
             Unfortunately, in reality, bitstreams won't be sequential ones and zeros and would appear more random, meaning the displayed error rate may not necessarily reflect real world conditions for data transmission.~\cite{SChatterjee2023}
+        
+        \subsection{Microcontroller-based BER}
+            An STM32 Microcontroller combined with a Complex Programmable Logic Device (CPLD) was used to make a BER tester.
+            A specific type of communication channel is not specified.
+            This system uses pseudorandom patterns to test a channel.~\cite{NMarda2014}
+
+            A single STM32 is used for both transmitting and receiving the bitstreams and tests the error rate at 2.048Mbps.~\cite{NMarda2014}
+            This data rate is similar to the data rate this project is targetting.
+            Due to using only one device, this may not accurately simulate real world conditions.
             
     
     \section{Work Performed to-date}
