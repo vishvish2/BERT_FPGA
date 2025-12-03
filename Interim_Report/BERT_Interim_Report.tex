@@ -68,6 +68,18 @@
             By transmitting and receiving on the same FPGA, having to synchronise bitstreams was not an issue.
             However, this is not good for simulating realistic transmission between two different devices.
         
+        \subsection{VLC BER tester}
+            A PCB with logic circuits was designed to test a VLC channel.
+            This is the same type of communication channel this project is meant for.
+            In this case, the bit generator is simply a square wave rather than a PRBS.\@
+            Effectively, the bit sequence being used to test the BERT is a sequences of alternating ones and zeros.~\cite{SChatterjee2023}
+
+            Two separate PCBs are used for transmitting and receiving the bitstreams.
+            This BERT can test for data rates up to 370kbps, which is signicantly lower than this project's targetted data rates.
+            As a result of using a periodic square wave, the issue of synchronising the transmitted and received bitstreams is simplified.
+            This system has significantly lower cost and complexity in comparison to FPGA equivalents.
+            Unfortunately, in reality, bitstreams won't be sequential ones and zeros and would appear more random, meaning the displayed error rate may not necessarily reflect real world conditions for data transmission.~\cite{SChatterjee2023}
+            
     
     \section{Work Performed to-date}
 
