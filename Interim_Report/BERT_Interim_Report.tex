@@ -88,6 +88,10 @@
             A single STM32 is used for both transmitting and receiving the bitstreams and tests the error rate at 2.048Mbps.~\cite{NMarda2014}
             This data rate is similar to the data rate this project is targetting.
             Due to using only one device, this may not accurately simulate real world conditions.
+
+        \vspace{0.5cm}
+
+        Overall, both FPGAs and Microcontrollers seem as valid options in building a BER tester since they can both be programmed to transmit and receive a PRBS and compare bitstreams. However, in order to best simulate real world data transmission, two separate devices for transmitting and receiving would be ideal. While this may increase cost, relative to the price of BER equipment, it shouldn't be significant.~\cite{MJBasford2020,SChatterjee2023}
             
     
     \section{Work Performed to-date}
