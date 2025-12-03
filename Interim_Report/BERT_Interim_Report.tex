@@ -44,16 +44,36 @@
         A metric of performance for digital communication channels is the Bit Error Rate (BER) which can be characterised via a Bit Error Rate Test (BERT).~\cite{SMJAlam2011}
 
         The BER of a communication channels is the proportion of bits in a data transmission which have an error.
-        When data has bit errors its requires either retransmission and/or extra processing from error correction algorithms.
-        A high BER would have signficant impacts on the channel's datarate capability.~\cite{SMJAlam2011}
+        When received data has bit errors it requires either retransmission and/or extra processing from error correction algorithms.
+        Hence, a high BER would have signficant impacts on the channel's datarate capability.~\cite{SMJAlam2011}
         Being able to measure this is important in ensuring a channel can transmit data quickly and efficiently.
         Unfortunately, systems that can measure the BER can be expensive and would be designed for data rates in the Gb/s range.
         As a result acquiring such equipment could prove difficult and would be excessive since such high data rates aren't always required.~\cite{MJBasford2020}
         
-        This project aims to construct a system that can accurately measure the BER of a communication channel in the Mb/s range of data rates at relatively low cost.
+        This project aims to construct a system that can accurately measure the BER of a Visible Light Communication (VLC) channel at data rates up to 10Mb/s, while keeping costs relatively low.
     
     \section{Literature Review}
-        Building a system to measure a channel's BER can be done via any programmable device such as Microcontrollers or Field Programmable Gate Arrays (FPGA).~\cite{SChatterjee2023,NMarda2014}
+        Building a system to measure a channel's BER can be done via any programmable device such as Microcontrollers or Field Programmable Gate Arrays (FPGA). Low cost BERTs have been developed using such devices.~\cite{MJBasford2020, SChatterjee2023, NMarda2014} Examples of these are discussed below.
+
+        \subsection{Serial Communication BER tester}
+            An FPGA-based device was developed to test the BER of a serial communication channel.
+            It uses a 31-bit Linear Shift Feedback Register (LFSR) to generate a Pseudorandom Binary Sequence (PRBS) which would have a length of \begin{math}
+                2^{31} - 1
+            \end{math} bits ({$\sim$}\begin{math}
+                2.14 \times 10^9
+            \end{math}).~\cite{MJBasford2020,DRiccardi2011}
+
+            The system works by transmitting a PRBS to an external channel and receiving the bitstream on the same FPGA.\@
+            The bits are generated, received and compared simultaneously. It is capable of testing data rates of up to 50Mbps and used the Anritsu MP8302A BERT for reference.~\cite{MJBasford2020}
+            By transmitting and receiving on the same FPGA, having to synchronise bitstreams was not an issue.
+            However, this is not good for simulating realistic transmission between two different devices.
+        
+    
+    \section{Work Performed to-date}
+
+    \section{Project Management}
+
+    \section{Future Work}
 
     \bibliographystyle{IEEEtran} % IEEE style
     \bibliography{references}
