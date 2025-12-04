@@ -108,6 +108,7 @@
 
             \subsubsection{MC}
                 The board being tested here is the NUCLEO-F401RE board which has an STM32F401RET6 Microcontroller using the Serial Peripheral Interface (SPI) synchronous serial communication protocol.~\cite{NUCLEO2014,STM2014}
+                It was programmed using STM32CUBEIDE.\@
 
                 \begin{figure}[H]
                     \centering
@@ -137,14 +138,46 @@
                 The signal is almost triangular, but still holds a fundamental frequency of 42MHz.
                 However, the peak-to-peak voltage (2.14V) is attenuated compared to that at 10MHz (3.36V) in Figure 1 and 500kHz (3.48V) in Figure 2.
 
-                The oscilloscope probe being used has a -3dB bandwidth of 10MHz which explains the distortion in the 10MHz and 42MHz clock signals.
+                The oscilloscope probe being used (RT-ZPO3) has a -3dB bandwidth of 10MHz which explains the distortion in the 10MHz and 42MHz clock signals.~\cite{R&S2019}
                 This is because in the Fourier Series of a square wave, along with its fundamental frequency, there are other higher frequencies that allow the wave to be square.~\cite{JASvoboda2013}
                 So even in a 10MHz square wave, which is exactly at the cut off frequency, there are high frequency harmonics that exist which allow for the wave to be square.
                 These frequencies are attenuated, giving the output in Figure 1.
                 But since the 10MHz frequency itself is within the bandwidth, there is little to no attenuation in the peak-to-peak voltage, like there is at 42MHz in Figure 2.
 
             \subsubsection{FPGA}
+                The board being tested here is a DE0-NANO which contains an ALTERA Cyclone IV EP4CE22F17C6 FPGA.\@
+                It was programmed via Quartus Prime Lite.~\cite{Terasic2012}
 
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.8\textwidth]{img/FPGA/10MHz_Clock.png}
+                    \caption{Oscilloscope capture of a 10MHz clock from the DE0-Nano FPGA board}
+                \end{figure}
+
+                At a 10MHz clock, the FPGA provides a similar output to the microcontroller, with the probe causing the same type of distortion.
+                There is a minor difference in peak-to-peak voltage.
+
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.8\textwidth]{img/FPGA/500kHz_Clock.png}
+                    \caption{Oscilloscope capture of a 500kHz clock from the DE0-Nano FPGA board}
+                \end{figure}
+
+                When the clock is turned down to 500kHz, like the microcontroller, the wave appears as a conventional square wave due to the clock frequency being well within the bandwidth of the oscilloscope probe.~\cite{R&S2019}
+
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.8\textwidth]{img/FPGA/50MHz_Clock.png}
+                    \caption{Oscilloscope capture of a 50MHz clock from the DE0-Nano FPGA board}
+                \end{figure}
+
+                The FPGA allows for a maximum clock frequency of 50MHz which is the same frequency as the on board oscillator.~\cite{Terasic2012}
+                The clock signal in Figure 6 faces similar issues to the 42MHz clock from the microcontroller (distortion and attenuation) but a slightly greater degree due to being a higher frequency.
+                This appears to be a limitation of the probe being used, not the board.
+
+                Both choices of hardware display similar results in testing with clock signals suggesting they are both adequately capable of being used to develop a BERT set.
+                The FPGA has a higher maxmimum clock frequency of 50MHz over the microcontroller's 42MHz suggesting it can be pushed further to test higher data rates.~\cite{NUCLEO2014,STM2014,Terasic2012}
+                Considering the low level of programming required for this project, the FPGA has been chosen to develop the BERT.\@
 
     \section{Project Management}
 
