@@ -92,13 +92,16 @@
 
         \vspace{0.5cm}
 
-        Overall, both FPGAs and Microcontrollers seem as valid options in building a BER tester since they can both be programmed to transmit and receive a PRBS and compare bitstreams. However, in order to best simulate real world data transmission, two separate devices for transmitting and receiving would be ideal. While this may increase cost, relative to the price of BER equipment, it shouldn't be significant.~\cite{MJBasford2020,SChatterjee2023}
+        Overall, both FPGAs and Microcontrollers seem as valid options in building a BER tester since they can both be programmed to transmit and receive a PRBS and compare bitstreams.
+        However, in order to best simulate real world data transmission, two separate devices for transmitting and receiving would be ideal.
+        While this may increase cost, relative to the price of BER equipment, it shouldn't be significant.~\cite{MJBasford2020,SChatterjee2023}
             
     
     \section{Work Performed to-date}
     
         \subsection{Choice of Hardware}
-            In this project, there is choice of hardware between using Microcontrollers or FPGAs. To detemine which is suitable, the capabilities of a device of each were tested using a 10MHz clock signal, which would allow for data rate of 10Mbps.
+            In this project, there is choice of hardware between using Microcontrollers or FPGAs.
+            To detemine which is suitable, the capabilities of a device of each were tested using a 10MHz clock signal, which would allow for data rate of 10Mbps.
 
             \subsubsection{MC}
                 The board being tested here is the NUCLEO-F401RE board which has an STM32F401RET6 Microcontroller using the Serial Peripheral Interface (SPI) synchronous serial communication protocol.~\cite{NUCLEO2014,STM2014}
@@ -109,7 +112,9 @@
                     \caption{Oscilloscope capture of a 10MHz clock from the NUCLEO-F401RE}
                 \end{figure}
 
-                In Figure 1, the clock signal is the correct frequency with an adequate peak-to-peak voltage. However, the signal appears to rise and fall exponentially rather than instantaneously like a typical square wave would. Different frequencies of clock signals can be used to test for this effect.
+                In Figure 1, the clock signal is the correct frequency with an adequate peak-to-peak voltage.
+                However, the signal appears to rise and fall exponentially rather than instantaneously like a typical square wave would.
+                Different frequencies of clock signals can be used to test for this effect.
 
                 \begin{figure}[H]
                     \centering
@@ -117,7 +122,7 @@
                     \caption{Oscilloscope capture of a 500kHz clock from the NUCLEO-F401RE}
                 \end{figure}
 
-                In Figure 2, it can be seen that the microcontroller produces a conventional square wave clock signal at 500kHz, suggesting that there is a limitation in the measurement equipment. 
+                In Figure 2, it can be seen that the microcontroller produces a conventional square wave clock signal at 500kHz, suggesting that there is a frequency limitation in the measurement equipment. 
 
                 \begin{figure}[H]
                     \centering
@@ -125,9 +130,15 @@
                     \caption{Oscilloscope capture of a 42MHz clock from the NUCLEO-F401RE}
                 \end{figure}
 
-                In Figure 3, the microcontroller is set to output a clock signal at its highest possible frequency of 42MHz.~\cite{NUCLEO2014,STM2014} The signal is almost triangular, but still holds a fundamental frequency of 42MHz. However, the peak-to-peak voltage (2.14V) is attenuated compared to that at 10MHz (3.36V) in Figure 1 and 500kHz (3.48V) in Figure 2.
+                In Figure 3, the microcontroller is set to output a clock signal at its highest possible frequency of 42MHz.~\cite{NUCLEO2014,STM2014}
+                The signal is almost triangular, but still holds a fundamental frequency of 42MHz.
+                However, the peak-to-peak voltage (2.14V) is attenuated compared to that at 10MHz (3.36V) in Figure 1 and 500kHz (3.48V) in Figure 2.
 
-                The oscilloscope probe being used has a -3dB bandwidth of 10MHz which explains the distortion in the 10MHz and 42MHz clock signals. This is because in the Fourier Series of a square wave, along with its fundamental frequency, there are other higher frequencies that allow the wave to be square.~\cite{JASvoboda2013} So even in a 10MHz square wave, which is exactly at the cut off frequency, there are high frequency harmonics that exist which allow for the wave to be square. These frequencies are attenuated, giving the output in Figure 1. But since the 10MHz frequency itself is within the bandwidth, there is little to no attenuation in the peak-to-peak voltage, like there is at 42MHz in Figure 2.
+                The oscilloscope probe being used has a -3dB bandwidth of 10MHz which explains the distortion in the 10MHz and 42MHz clock signals.
+                This is because in the Fourier Series of a square wave, along with its fundamental frequency, there are other higher frequencies that allow the wave to be square.~\cite{JASvoboda2013}
+                So even in a 10MHz square wave, which is exactly at the cut off frequency, there are high frequency harmonics that exist which allow for the wave to be square.
+                These frequencies are attenuated, giving the output in Figure 1.
+                But since the 10MHz frequency itself is within the bandwidth, there is little to no attenuation in the peak-to-peak voltage, like there is at 42MHz in Figure 2.
 
             \subsubsection{FPGA}
 
