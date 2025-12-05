@@ -142,7 +142,7 @@
                 This is because in the Fourier Series of a square wave, along with its fundamental frequency, there are other higher frequencies that allow the wave to be square.~\cite{JASvoboda2013}
                 So even in a 10MHz square wave, which is exactly at the cut off frequency, there are high frequency harmonics that exist which allow for the wave to be square.
                 These frequencies are attenuated, giving the output in Figure 1.
-                But since the 10MHz frequency itself is within the bandwidth, there is little to no attenuation in the peak-to-peak voltage, like there is at 42MHz in Figure 2.
+                But since the 10MHz frequency itself is within the bandwidth, there is little to no attenuation in the peak-to-peak voltage, like there is at 42MHz in Figure 2. From testing at a lower frequency, it can be concluded that the hardware still produces are square wave at 10MHz with measurements being limited by the probe.
 
             \subsubsection{FPGA}
                 The board being tested here is a DE0-NANO which contains an ALTERA Cyclone IV EP4CE22F17C6 FPGA.\@
@@ -173,11 +173,13 @@
 
                 The FPGA allows for a maximum clock frequency of 50MHz which is the same frequency as the on board oscillator.~\cite{Terasic2012}
                 The clock signal in Figure 6 faces similar issues to the 42MHz clock from the microcontroller (distortion and attenuation) but a slightly greater degree due to being a higher frequency.
-                This appears to be a limitation of the probe being used, not the board.
+                Since none of these effects occur at a lower frequency, this appears to be a limitation of the probe being used, not the board.
 
                 Both choices of hardware display similar results in testing with clock signals suggesting they are both adequately capable of being used to develop a BERT set.
                 The FPGA has a higher maxmimum clock frequency of 50MHz over the microcontroller's 42MHz suggesting it can be pushed further to test higher data rates.~\cite{NUCLEO2014,STM2014,Terasic2012}
                 Considering the low level of programming required for this project, the FPGA has been chosen to develop the BERT.\@
+        
+        \subsection{PRBS generator}
 
     \section{Project Management}
 
