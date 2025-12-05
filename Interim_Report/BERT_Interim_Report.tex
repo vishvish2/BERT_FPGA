@@ -189,13 +189,30 @@
             \end{equation}
             This polynomial isn't mathematical, it is a representation of the LFSR that would be used to generate a PRBS-7.
             The values of the powers represent which bits are used for the feedback.
-            What this polynomial means is that the 7th and 6th bits of the register are inputs to an XOR gate where the output is fed into the Least Significant Bit (LSB) of the shift register.~\cite{DRiccardi2011,MGeorge2007}
+            What this polynomial means is that the 7th and 6th bits of the register are inputs to an XOR gate where the output is fed into the Least Significant Bit (LSB) of the shift register.
+            The Most Significant Bit (MSB) of the LFSR is transmitted to the communication channel.~\cite{DRiccardi2011,MGeorge2007}
+            This can be implemented using D-Type Flip Flops in Quartus Prime.
+            \subsubsection{FPGA implementation}
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=1\textwidth]{img/FPGA/PRBS_CLK_BTN.png}
+                    \caption{PRBS Generator implemented on Quartus Prime Lite with the clock tied to a push button}
+                \end{figure}
+                For testing purposes, the clock will initially be tied to a push button on the DE0-Nano with the status of the LFSR tied to LEDs.
+                The initial status of the LFSR is set to 7 ones. 
+                The buttons on the FPGA are active low meaning they become logic level 0 when pressed and logic level one when released.
+                The LSFR status varies when the button is released, not when pressed down.
+                This means the PRBS generator is synchronised to the rising edge of the clock signal which is the expected behaviour.
+                Once the button is pressed 127 times, the LSFR's status returns to the original state of 7 ones.
+                Hence, PRBS generator is producing a repetitive bit sequence of length 127, which is also expected.
+
             When the initial seed is 7 ones, the expected repeating 127 bit sequence is the following.
-
-            \begin{math}            
-                1111111000000100000110000101000111100100010110011101010011111010000111000100     \newline100110110101101111011000110100101110111001100101010
-            \end{math}
-
+            \begin{flushleft}
+                \texttt{1111111000000100000110000101000111100100010110011101010011111010000111000100} \\
+                \texttt{100110110101101111011000110100101110111001100101010}
+            \end{flushleft}
+            This can be compared to the output of the PRBS generator viewed on an oscilloscope.
+            
     \section{Project Management}
 
     \section{Future Work}
