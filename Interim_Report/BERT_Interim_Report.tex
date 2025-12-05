@@ -192,7 +192,7 @@
             What this polynomial means is that the 7th and 6th bits of the register are inputs to an XOR gate where the output is fed into the Least Significant Bit (LSB) of the shift register.
             The Most Significant Bit (MSB) of the LFSR is transmitted to the communication channel.~\cite{DRiccardi2011,MGeorge2007}
             This can be implemented using D-Type Flip Flops in Quartus Prime.
-            \subsubsection{FPGA implementation}
+            \subsubsection{Push Button Clock}
 
                 \begin{figure}[H]
                     \centering
@@ -214,6 +214,8 @@
                     \texttt{100110110101101111011000110100101110111001100101010}
                 \end{flushleft}
                 This can be compared to the output of the PRBS generator viewed on an oscilloscope.
+
+            \subsubsection{500kHz Clock}
 
                 \begin{figure}[H]
                     \centering
@@ -245,6 +247,8 @@
                 At 500kHz, the oscilloscope probes don't distort the square waveforms.
                 When comparing the output to the expected bit sequence, no mistakes are found and the sequence repeats every 127 bits as expected.
 
+            \subsubsection{10MHz Clock}
+            
                 \begin{figure}[H]
                     \centering
                     \includegraphics[width=1\textwidth]{img/FPGA/PRBS_CLK_10MHz.png}
@@ -277,13 +281,15 @@
                 The probe used has a -3dB bandwidth of 10MHz.~\cite{R&S2019,JASvoboda2013}
                 No mistakes are found when comparing the output to the expected bit sequence and the sequence repeats every 127 bits as expected.
 
+            \subsubsection{20MHz Clock}
+
                 \begin{figure}[H]
                     \centering
                     \includegraphics[width=0.9\textwidth]{img/FPGA/PRBS_CLK_20MHz.png}
                     \caption{PRBS Generator implemented on Quartus Prime Lite with a 20MHz clock signal}
                 \end{figure}
 
-                The 50MHz oscillator on the FPGA is initiated and connected to a PLL to divide it by 5 and multiply by 2, producing a 20MHz clock signal.
+                The PLL to multiply the 50MHz oscillator by 2/5, producing a 20MHz clock signal.
                 This signal is fed into the clock input of the PRBS generator.
 
                 \begin{figure}[H]
@@ -302,9 +308,7 @@
                 At 20MHz, the oscilloscope probes distort the square waveforms due to high frequency components of the square wave being attenuated.
                 This happens at a much greater degree than at 10MHz.~\cite{JASvoboda2013}
                 The bit sequence produced at 20MHz is the same as the expected bit sequence.
-                
-
-            
+                            
     \section{Project Management}
 
     \section{Future Work}

@@ -857,30 +857,6 @@ on the Quartus Prime software download page.
 	(pt 64 -56)
 )
 (connector
-	(pt 488 160)
-	(pt 576 160)
-)
-(connector
-	(pt 816 176)
-	(pt 848 176)
-)
-(connector
-	(pt 456 240)
-	(pt 576 240)
-)
-(connector
-	(pt 576 240)
-	(pt 632 240)
-)
-(connector
-	(pt 576 88)
-	(pt 576 160)
-)
-(connector
-	(pt 576 160)
-	(pt 576 240)
-)
-(connector
 	(pt 648 72)
 	(pt 656 72)
 )
@@ -1048,6 +1024,30 @@ on the Quartus Prime software download page.
 	(pt 656 16)
 	(pt 696 16)
 )
+(connector
+	(pt 488 160)
+	(pt 576 160)
+)
+(connector
+	(pt 816 176)
+	(pt 848 176)
+)
+(connector
+	(pt 456 240)
+	(pt 576 240)
+)
+(connector
+	(pt 576 240)
+	(pt 632 240)
+)
+(connector
+	(pt 576 88)
+	(pt 576 160)
+)
+(connector
+	(pt 576 160)
+	(pt 576 240)
+)
 (junction (pt 88 144))
 (junction (pt 176 144))
 (junction (pt 264 144))
@@ -1064,8 +1064,6 @@ on the Quartus Prime software download page.
 (junction (pt 576 72))
 (junction (pt 304 72))
 (junction (pt 224 72))
-(junction (pt 576 240))
-(junction (pt 576 160))
 (junction (pt 656 72))
 (junction (pt 136 72))
 (junction (pt 88 32))
@@ -1076,3 +1074,5 @@ on the Quartus Prime software download page.
 (junction (pt 264 32))
 (junction (pt 576 0))
 (junction (pt 656 16))
+(junction (pt 576 240))
+(junction (pt 576 160))
