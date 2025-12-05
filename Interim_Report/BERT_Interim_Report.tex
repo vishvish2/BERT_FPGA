@@ -272,9 +272,34 @@
                     \caption{Oscilloscope output of PRBS generator at 10MHz. First 7 bits in the figure are the 121st to 127th bits of the sequence. Sequence repeats after this}
                 \end{figure}
 
-                In Figures 13, 14 and 15, CH1 is tied to the clock signal and CH2 is tied to the output of the PRBS generator.
+                In Figures 16, 17 and 18, CH1 is tied to the clock signal and CH2 is tied to the output of the PRBS generator.
                 At 10MHz, the oscilloscope probes distort the square waveforms due to high frequency components of the square wave being attenuated.
-                When comparing the output to the expected bit sequence, no mistakes are found and the sequence repeats every 127 bits as expected.
+                No mistakes are found when comparing the output to the expected bit sequence and the sequence repeats every 127 bits as expected.
+
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=1\textwidth]{img/FPGA/PRBS_CLK_20MHz.png}
+                    \caption{PRBS Generator implemented on Quartus Prime Lite with a 20MHz clock signal}
+                \end{figure}
+
+                The 50MHz oscillator on the FPGA is initiated and connected to a PLL to divide it by 5 and multiply by 2, producing a 20MHz clock signal.
+                This signal is fed into the clock input of the PRBS generator.
+
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.9\textwidth]{img/FPGA/PRBS_20MHz_1.png}
+                    \caption{Oscilloscope output of PRBS generator at 20MHz (first 120 bits)}
+                \end{figure}
+
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.9\textwidth]{img/FPGA/PRBS_20MHz_2.png}
+                    \caption{Oscilloscope output of PRBS generator at 20MHz First 7 bits in the figure are the 121st to 127th bits of the sequence. Sequence repeats after this}
+                \end{figure}
+
+                In Figures 13, 14 and 15, CH1 is tied to the clock signal and CH2 is tied to the output of the PRBS generator.
+                At 20MHz, the oscilloscope probes distort the square waveforms due to high frequency components of the square wave being attenuated. This happens at a much greater degree than at 10MHz.
+                
 
             
     \section{Project Management}
