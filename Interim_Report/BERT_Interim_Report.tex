@@ -4,6 +4,7 @@
 \usepackage{amsmath} % Equations
 \usepackage{hyperref} % For links
 \usepackage{float} % For image placement
+\usepackage{breqn}
 
 \begin{document}
 
@@ -180,6 +181,20 @@
                 Considering the low level of programming required for this project, the FPGA has been chosen to develop the BERT.\@
         
         \subsection{PRBS generator}
+            For this project, a PRBS generator will be used to generate a bitstream for the BERT.\@
+            At this point in time, a PRBS-7 generator has been made.
+            A PRBS-7 would repeat every 127 bits and is represented by the following polynomial.~\cite{DRiccardi2011}
+            \begin{equation}
+                x^7 + x^6 + 1
+            \end{equation}
+            This polynomial isn't mathematical, it is a representation of the LFSR that would be used to generate a PRBS-7.
+            The values of the powers represent which bits are used for the feedback.
+            What this polynomial means is that the 7th and 6th bits of the register are inputs to an XOR gate where the output is fed into the Least Significant Bit (LSB) of the shift register.~\cite{DRiccardi2011,MGeorge2007}
+            When the initial seed is 7 ones, the expected repeating 127 bit sequence is the following.
+
+            \begin{math}            
+                1111111000000100000110000101000111100100010110011101010011111010000111000100     \newline100110110101101111011000110100101110111001100101010
+            \end{math}
 
     \section{Project Management}
 
