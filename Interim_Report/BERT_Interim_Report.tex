@@ -37,16 +37,16 @@
     \tableofcontents   
 
     \section{Project Description}
-        Communication networks are continously expanding in capacity and speed and being able to ensure signal integrity is paramount.
+        Communication networks are continuously expanding in capacity and speed and being able to ensure signal integrity is paramount.
         The most common example of such a system is the internet, which uses undersea optical fibres for data transmission.
-        Such networks have become a central component in the modern day world with applications in many important industries, such as telecommucations, cloud services, banking, healthcare and transportation.
+        Such networks have become a central component in the modern day world with applications in many important industries, such as telecommunications, cloud services, banking, healthcare and transportation.
         In accordance with these advancements, techniques to measure the performance of communication channels have evolved.
         Channels for digital communication as susceptible to incorrect data transmission arising due many possible factors such as noise or interference.
         A metric of performance for digital communication channels is the Bit Error Rate (BER) which can be characterised via a Bit Error Rate Test (BERT).~\cite{SMJAlam2011}
 
         The BER of a communication channels is the proportion of bits in a data transmission which have an error.
         When received data has bit errors it requires either retransmission and/or extra processing from error correction algorithms.
-        Hence, a high BER would have signficant impacts on the channel's datarate capability.~\cite{SMJAlam2011}
+        Hence, a high BER would have significant impacts on the channel's data rate capability.~\cite{SMJAlam2011}
         Being able to measure this is important in ensuring a channel can transmit data quickly and efficiently.
         Unfortunately, systems that can measure the BER can be expensive and would be designed for data rates in the Gb/s range.
         As a result acquiring such equipment could prove difficult and would be excessive since such high data rates aren't always required.~\cite{MJBasford2020}
@@ -76,12 +76,12 @@
             A PCB with logic circuits was designed to test a VLC channel.
             This is the same type of communication channel this project is meant for.
             In this case, the bit generator is simply a square wave rather than a PRBS.\@
-            Effectively, the bit sequence being used to test the BERT is a sequences of alternating ones and zeros.~\cite{SChatterjee2023}
+            Effectively, the bit sequence being used to test the BERT is a sequence of alternating ones and zeros.~\cite{SChatterjee2023}
 
             Two separate PCBs are used for transmitting and receiving the bitstreams.
-            This BERT can test for data rates up to 370kbps, which is signicantly lower than this project's targetted data rates.
+            This BERT can test for data rates up to 370kbps, which is significantly lower than this project's targetted data rates.
             As a result of using a periodic square wave, the issue of synchronising the transmitted and received bitstreams is simplified.
-            This system has significantly lower cost and complexity in comparison to FPGA equivalents.
+            This system has significantly smaller cost and complexity in comparison to FPGA equivalents.
             Unfortunately, in reality, bitstreams won't be sequential ones and zeros and would appear more random, meaning the displayed error rate may not necessarily reflect real world conditions for data transmission.~\cite{SChatterjee2023}
         
         \subsection{Microcontroller-based BER}
@@ -104,7 +104,7 @@
     
         \subsection{Choice of Hardware}
             In this project, there is choice of hardware between using Microcontrollers or FPGAs.
-            To detemine which is suitable, the capabilities of a device of each were tested using a 10MHz clock signal, which would allow for data rate of 10Mbps.
+            To determine which is suitable, the capabilities of a device of each were tested using a 10MHz clock signal, which would allow for data rate of 10Mbps.
 
             \subsubsection{MC}
                 The board being tested here is the NUCLEO-F401RE board which has an STM32F401RET6 Microcontroller using the Serial Peripheral Interface (SPI) synchronous serial communication protocol.~\cite{NUCLEO2014,STM2014}
@@ -140,7 +140,7 @@
 
                 The oscilloscope probe being used (RT-ZPO3) has a -3dB bandwidth of 10MHz which explains the distortion in the 10MHz and 42MHz clock signals.~\cite{R&S2019}
                 This is because in the Fourier Series of a square wave, along with its fundamental frequency, there are other higher frequencies that allow the wave to be square.~\cite{JASvoboda2013}
-                So even in a 10MHz square wave, which is exactly at the cut off frequency, there are high frequency harmonics that exist which allow for the wave to be square.
+                So even in a 10MHz square wave, which is exactly at the cut-off frequency, there are high frequency harmonics that exist which allow for the wave to be square.
                 These frequencies are attenuated, giving the output in Figure 1.
                 But since the 10MHz frequency itself is within the bandwidth, there is little to no attenuation in the peak-to-peak voltage, like there is at 42MHz in Figure 2. From testing at a lower frequency, it can be concluded that the hardware still produces are square wave at 10MHz with measurements being limited by the probe.
 
@@ -171,12 +171,12 @@
                     \caption{Oscilloscope capture of a 50MHz clock from the DE0-Nano FPGA board}
                 \end{figure}
 
-                The FPGA allows for a maximum clock frequency of 50MHz which is the same frequency as the on board oscillator.~\cite{Terasic2012}
+                The FPGA allows for a maximum clock frequency of 50MHz which is the same frequency as the onboard oscillator.~\cite{Terasic2012}
                 The clock signal in Figure 6 faces similar issues to the 42MHz clock from the microcontroller (distortion and attenuation) but a slightly greater degree due to being a higher frequency.
                 Since none of these effects occur at a lower frequency, this appears to be a limitation of the probe being used, not the board.
 
                 Both choices of hardware display similar results in testing with clock signals suggesting they are both adequately capable of being used to develop a BERT set.
-                The FPGA has a higher maxmimum clock frequency of 50MHz over the microcontroller's 42MHz suggesting it can be pushed further to test higher data rates.~\cite{NUCLEO2014,STM2014,Terasic2012}
+                The FPGA has a higher maximum clock frequency of 50MHz over the microcontroller's 42MHz suggesting it can be pushed further to test higher data rates.~\cite{NUCLEO2014,STM2014,Terasic2012}
                 Considering the low level of programming required for this project, the FPGA has been chosen to develop the BERT.\@
         
         \subsection{PRBS generator}
