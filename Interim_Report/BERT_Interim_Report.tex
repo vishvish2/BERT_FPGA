@@ -193,10 +193,12 @@
             The Most Significant Bit (MSB) of the LFSR is transmitted to the communication channel.~\cite{DRiccardi2011,MGeorge2007}
             This can be implemented using D-Type Flip Flops in Quartus Prime.
             \subsubsection{FPGA implementation}
+
                 \begin{figure}[H]
                     \centering
                     \includegraphics[width=1\textwidth]{img/FPGA/PRBS_CLK_BTN.png}
                     \caption{PRBS Generator implemented on Quartus Prime Lite with the clock tied to a push button}
+
                 \end{figure}
                 For testing purposes, the clock will initially be tied to a push button on the DE0-Nano with the status of the LFSR tied to LEDs.
                 The initial status of the LFSR is set to 7 ones. 
@@ -206,12 +208,74 @@
                 Once the button is pressed 127 times, the LSFR's status returns to the original state of 7 ones.
                 Hence, PRBS generator is producing a repetitive bit sequence of length 127, which is also expected.
 
-            When the initial seed is 7 ones, the expected repeating 127 bit sequence is the following.
-            \begin{flushleft}
-                \texttt{1111111000000100000110000101000111100100010110011101010011111010000111000100} \\
-                \texttt{100110110101101111011000110100101110111001100101010}
-            \end{flushleft}
-            This can be compared to the output of the PRBS generator viewed on an oscilloscope.
+                When the initial seed is 7 ones, the expected repeating 127 bit sequence is the following.
+                \begin{flushleft}
+                    \texttt{1111111000000100000110000101000111100100010110011101010011111010000111000100} \\
+                    \texttt{100110110101101111011000110100101110111001100101010}
+                \end{flushleft}
+                This can be compared to the output of the PRBS generator viewed on an oscilloscope.
+
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=1\textwidth]{img/FPGA/PRBS_CLK_500kHz.png}
+                    \caption{PRBS Generator implemented on Quartus Prime Lite with a 500kHz clock signal}
+                \end{figure}
+
+                The 50MHz oscillator on the FPGA is initiated and connected to a Phase Locked Loop (PLL) to divide it by 100, producing a 500kHz clock signal.
+                This signal is fed into the clock input of the PRBS generator.
+
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.9\textwidth]{img/FPGA/PRBS_500kHz_1.png}
+                    \caption{Oscilloscope output of PRBS generator at 500kHz (first 60 bits)}
+                \end{figure}
+
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.9\textwidth]{img/FPGA/PRBS_500kHz_2.png}
+                    \caption{Oscilloscope output of PRBS generator at 500kHz (61st to 120th bits)}
+                \end{figure}
+
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=1\textwidth]{img/FPGA/PRBS_500kHz_3.png}
+                    \caption{Oscilloscope output of PRBS generator at 500kHz. First 7 bits in the figure are the 121st to 127th bits of the sequence. Sequence repeats after this}
+                \end{figure}
+                In Figures 9, 10 and 11, channel 1 (CH1) is tied to the clock signal and channel 2 (CH2) is tied to the output of the PRBS generator.
+                At 500kHz, the oscilloscope probes don't distort the square waveforms.
+                When comparing the output to the expected bit sequence, no mistakes are found and the sequence repeats every 127 bits as expected.
+
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=1\textwidth]{img/FPGA/PRBS_CLK_10MHz.png}
+                    \caption{PRBS Generator implemented on Quartus Prime Lite with a 10MHz clock signal}
+                \end{figure}
+
+                The 50MHz oscillator on the FPGA is initiated and connected to a PLL to divide it by 5, producing a 10MHz clock signal.
+                This signal is fed into the clock input of the PRBS generator.
+
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.9\textwidth]{img/FPGA/PRBS_10MHz_1.png}
+                    \caption{Oscilloscope output of PRBS generator at 10MHz (first 60 bits)}
+                \end{figure}
+
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.9\textwidth]{img/FPGA/PRBS_10MHz_2.png}
+                    \caption{Oscilloscope output of PRBS generator at 10MHz (61st to 120th bits)}
+                \end{figure}
+
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.9\textwidth]{img/FPGA/PRBS_10MHz_3.png}
+                    \caption{Oscilloscope output of PRBS generator at 10MHz. First 7 bits in the figure are the 121st to 127th bits of the sequence. Sequence repeats after this}
+                \end{figure}
+
+                In Figures 13, 14 and 15, CH1 is tied to the clock signal and CH2 is tied to the output of the PRBS generator.
+                At 10MHz, the oscilloscope probes distort the square waveforms due to high frequency components of the square wave being attenuated.
+                When comparing the output to the expected bit sequence, no mistakes are found and the sequence repeats every 127 bits as expected.
+
             
     \section{Project Management}
 
