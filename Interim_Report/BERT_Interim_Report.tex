@@ -1,43 +1,49 @@
-\documentclass[12pt]{article}
+\documentclass[12pt]{project_report}
 \usepackage{graphicx} % Required for inserting images
-\usepackage[margin=1in]{geometry} % 1 inch margins
+% \usepackage[margin=1in]{geometry} % 1 inch margins
 \usepackage{amsmath} % Equations
 \usepackage{hyperref} % For links
 \usepackage{float} % For image placement
 \usepackage{breqn}
 \usepackage{tikz}
 
-\title{{Low Cost FPGA-based}\\{Bit Error Rate Test set}}
+\title{Low-Cost FPGA-Based\\(Bit Error Rate Test set)}
 \author{Vishnu Barath}
-\date{}
+\date{\today}
+\supervisor{Martyn Fice}
+%\advisor{My advisor}
+\aiuse{}
+\wordcount{2}
 
 \begin{document}
 
+\coverpage\
+\declaration\
 \maketitle
 
-\begin{center}
-    \vspace{3cm}
-    {\large \textbf{3\textsuperscript{rd} Year Project Interim Report}}\\[0.7cm]
-    {\large Department of Electronic \&\\ Electrical Engineering}\\[0.5cm]
-    {\large UCL}\\[0.7cm]
-    {\large Supervisor: Dr Martyn Fice}\\[1.5cm]
-    \date{\today}
-\end{center}
-\clearpage
-I have read and understood UCL's and the Department's statements and guidelines concerning plagiarism.\\[0.5cm]
-I declare that all material described in this report is my own work except where explicitly and individually indicated in the text.
-This includes ideas described in the text, figures and computer programs.\\[0.5cm]
-This report contains \_ pages (excluding this page and the appendices) and \_ words.\\[0.5cm]
-% TODO Fill these in at the end
-Signed: Vishnu Barath \hfill Date: \date{\today}
+% \begin{center}
+%     \vspace{3cm}
+%     {\large \textbf{3\textsuperscript{rd} Year Project Interim Report}}\\[0.7cm]
+%     {\large Department of Electronic \&\\ Electrical Engineering}\\[0.5cm]
+%     {\large UCL}\\[0.7cm]
+%     {\large Supervisor: Dr Martyn Fice}\\[1.5cm]
+%     \date{\today}
+% \end{center}
+% \clearpage
+% I have read and understood UCL's and the Department's statements and guidelines concerning plagiarism.\\[0.5cm]
+% I declare that all material described in this report is my own work except where explicitly and individually indicated in the text.
+% This includes ideas described in the text, figures and computer programs.\\[0.5cm]
+% This report contains \_ pages (excluding this page and the appendices) and \_ words.\\[0.5cm]
+% % TODO Fill these in at the end
+% Signed: Vishnu Barath \hfill Date: \date{\today}
 
 \clearpage
 \begin{abstract}
-    The main aim of this project is to build a low-cost system that can test the Bit Error Ratio (BER) of a communication channel.
-    It will use Pseudorandom Binary Sequence (PRBS) generators to generate a known bitstream which will be transmitted across a communication channel. 
-    The sequence will be generated on both the transmitter and the receiver to compare them and calculate the BER.\@
+    This project aims to build a low-cost system that can test the Bit Error Ratio (BER) of a communication channel.
+    It will use Pseudorandom Binary Sequence (PRBS) generators to generate a known bitstream which will be transmitted across the channel. 
+    The sequence will be generated on both the transmitter and the receiver to compare and calculate the BER.\@
     So far, a transmitter has been successfully developed which generates a repeating PRBS-7 sequence with a length of 127 bits.
-    The PRBS generator is implemented using a Linear Feedback Shift Register controlled by a 10MHz clock where a bit is transferred at every rising edge, achieving a data rate of 10Mbps.
+    The PRBS generator is implemented using a Linear Feedback Shift Register controlled by a 10MHz clock where a bit is transferred at every rising edge, achieving a bitrate of 10Mbps.
     This has been implemented on an FPGA.\@
 \end{abstract}
 
@@ -49,17 +55,17 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
     The most common example of such a system is the internet, which uses undersea optical fibres for data transmission.
     Such networks have become a central component in the modern world with applications in many important industries, such as telecommunications, cloud services, banking, healthcare and transportation.
     In accordance with these advancements, techniques to measure the performance of communication channels have evolved.
-    Channels for digital communication are susceptible to incorrect data transmission arising due many possible factors such as noise or interference.
-    A metric of performance for digital communication channels is the Bit Error Ratio (BER) which can be characterised via a Bit Error Rate Test (BERT).~\cite{SMJAlam2011}
+    Such channels are susceptible to incorrect transmissions arising due factors such as noise or interference.
+    A metric of performance for communication channels is the Bit Error Ratio (BER) which can be characterised via a Bit Error Rate Test (BERT).~\cite{SMJAlam2011}
 
-    The BER of a channel is the proportion of bits in a data transmission which have an error.
-    When received data has bit errors it requires retransmission and/or extra processing from error correction algorithms.
-    Hence, a high BER would significantly impact the channel's bitrate capability.~\cite{SMJAlam2011}
-    Being able to measure this is important in ensuring quick and efficient data transmission in a channel.
-    Unfortunately, systems that measure the BER can be expensive and would be designed for bitrates in the Gb/s range.
+    The BER of a channel is the proportion of bits in a transmission which have an error.
+    When received data has errors it requires retransmission or extra processing from error correction.
+    Hence, high BERs would significantly impact bitrate capability.~\cite{SMJAlam2011}
+    Being able to measure this is important in ensuring speed and efficiency in data transmission.
+    Unfortunately, systems that measure BERs can be expensive and would be designed for bitrates in the Gbps range.
     As a result, acquiring such equipment could prove difficult and excessive since such high speeds aren't always required.~\cite{MJBasford2020}
     
-    This project aims to construct a system that can accurately measure the BER of a Visible Light Communication (VLC) channel at data rates up to 10Mbps, while keeping costs relatively low. Below are the main goals and objectives of this project. 
+    This project aims to construct a system that can accurately measure the BER of a Visible Light Communication (VLC) channel at bitrates up to 10Mbps, while keeping costs relatively low. Below are the main goals and objectives of this project. 
 
     \begin{enumerate}
         \item Make a Pseudo Random Binary Sequence (PRBS) generator
@@ -81,10 +87,10 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
 
 \clearpage
 \section{Literature Review}
-    Building a system to measure a channel's BER can be done via any programmable device such as Microcontrollers or Field Programmable Gate Arrays (FPGA).
+    Building a system to measure a BER can be done via  programmable devices such as Microcontrollers or Field Programmable Gate Arrays (FPGA).
     A sequence of known bits is required for testing a BER.\@
     One common method for generating one is the PRBS.\@
-    Such sequences are generated using a Linear Feedback Shift Register (LFSR) where two specific bits in the register are fed into an XOR gate and fed back into the Least Significant Bit (LSB) of the register.~\cite{DRiccardi2011,MGeorge2007}
+    Such sequences are generated using a Linear Feedback Shift Register (LFSR) where two specific bits in the register are fed into an XOR gate then into the Least Significant Bit (LSB) of the register.~\cite{DRiccardi2011,MGeorge2007}
     Low cost BERTs have been developed using such methods.~\cite{MJBasford2020, SChatterjee2023, NMarda2014}
     Examples of these are discussed below.
 
@@ -98,7 +104,7 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
 
         The system works by transmitting a PRBS to an external channel and receiving the bitstream on the same FPGA.\@
         The bits are generated, received and compared simultaneously.
-        It is capable of testing data rates of up to 50Mbps and used the Anritsu MP8302A BERT for reference.~\cite{MJBasford2020}
+        It is capable of testing bitrates of up to 50Mbps and used the Anritsu MP8302A BERT for reference.~\cite{MJBasford2020}
         By transmitting and receiving on the same FPGA, having to synchronise bitstreams wasn't an issue.
         However, this isn't good for simulating realistic transmission between two different devices.
     
@@ -108,18 +114,17 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
         Effectively, the bit sequence being used to test the BERT is a sequence of alternating ones and zeros.~\cite{SChatterjee2023}
 
         Two separate PCBs are used for transmitting and receiving the bitstreams.
-        This BERT can test for data rates up to 370kbps, which is significantly lower than this project's targetted data rates.
+        This BERT can test for bitrates up to 370kbps, which is significantly lower than this project's target.
         Using a periodic square wave simplifies the issue of synchronising the transmitted and received bitstreams.
         This system is significantly cheaper and less complex than FPGA equivalents.
         Unfortunately, bitstreams realistically won't be sequential ones and zeros, meaning the displayed error ratio may not necessarily reflect real world conditions for data transmission.~\cite{SChatterjee2023}
-        %TODO refer to papers again later maybe
     
     \subsection{Microcontroller-based BER}
         An STM32 Microcontroller combined with a Complex Programmable Logic Device (CPLD) was used to make a BER tester.
         A specific type of communication channel isn't specified.
         This system uses pseudorandom patterns to test a channel.~\cite{NMarda2014}
 
-        A single STM32 is used for both transmitting and receiving the bitstreams and tests the error ratio at 2.048Mbps.~\cite{NMarda2014}
+        A single STM32 is used for transmitting and receiving the bitstreams and tests the error ratio at 2.048Mbps.~\cite{NMarda2014}
         This bitrate is similar to what this project is targetting.
         Due to using only one device, this may not accurately simulate real world conditions.
 
@@ -128,7 +133,7 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
         In order to best simulate realistic transmission, two separate devices for transmitting and receiving would be ideal.
         While this may increase cost, relative to the price of BER equipment, it shouldn't be significant.~\cite{MJBasford2020,SChatterjee2023}
         A PRBS generator will be used to generate a bitstream that will be used for calculating the BER.\@
-        \autoref{fig:BERT_Block} gives an overview of the proposed system.
+        \autoref{fig:BERT_Block} gives an overview of the system.
 
         \begin{figure}[H]
             \centering
@@ -154,7 +159,7 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
             \end{figure}
 
             In \autoref{fig:10MHz_MC}, the clock is the correct frequency with an adequate peak-to-peak voltage.
-            However, the signal appears to rise and fall exponentially rather than instantaneously like a typical square wave would.
+            However, the signal rises and falls exponentially rather than instantaneously like a typical square wave would.
             Different frequency clocks need to be tested for this effect.
 
             \begin{figure}[H]
@@ -163,7 +168,7 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
                 \caption{Oscilloscope capture of 500kHz clock from NUCLEO-F401RE}\label{fig:500kHz_MC}
             \end{figure}
 
-            \autoref{fig:500kHz_MC}, shows the microcontroller producing a square wave clock signal at 500kHz, suggesting that there is a limitation in the measurement equipment. 
+            \autoref{fig:500kHz_MC}, shows the microcontroller producing a square wave clock at 500kHz, suggesting that there is a limitation in the measurement equipment. 
 
             \begin{figure}[H]
                 \centering
@@ -171,16 +176,16 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
                 \caption{Oscilloscope capture of 42MHz clock from NUCLEO-F401RE}\label{fig:42MHz_MC}
             \end{figure}
 
-            In \autoref{fig:42MHz_MC}, the microcontroller is producing a clock signal at its highest possible frequency of 42MHz.~\cite{NUCLEO2014,STM2014}
+            In \autoref{fig:42MHz_MC}, the microcontroller is producing a clock at its highest possible frequency of 42MHz.~\cite{NUCLEO2014,STM2014}
             The signal is almost triangular, but still holds a fundamental frequency of 42MHz.
             However, the peak-to-peak voltage (2.14V) is attenuated compared to that at 10MHz (3.36V) in \autoref{fig:10MHz_MC} and 500kHz (3.48V) in \autoref{fig:500kHz_MC}.
 
             The oscilloscope probe being used (RT-ZPO3) has a -3dB bandwidth of 10MHz which explains the distortion in the 10MHz and 42MHz clocks.~\cite{R&S2019}
             This is because the Fourier Series of a square wave, along with its fundamental frequency, has other higher frequencies that allow the wave to be square.~\cite{JASvoboda2013}
-            So even in a 10MHz square wave, which is exactly at the cut-off frequency, there are high frequency harmonics which allow for the wave to be square.
+            So even in a 10MHz square wave, there are high frequencies  which allow for the wave to be square.
             These frequencies are attenuated, giving the output in \autoref{fig:10MHz_MC}.
             But since the 10MHz frequency is within the bandwidth, there is little attenuation in the peak-to-peak voltage, unlike at 42MHz in \autoref{fig:42MHz_MC}.
-            From testing at a lower frequency, it can be concluded that the hardware still produces are square wave at 10MHz with measurements being limited by the probe.
+            From testing at a lower frequency, it can be concluded that the hardware still produces a square wave at 10MHz with measurements being limited by the probe.
 
         \subsubsection{FPGA}
             The board being tested here is a DE0-Nano with an ALTERA Cyclone IV EP4CE22F17C6 FPGA.\@
@@ -210,11 +215,10 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
             \end{figure}
 
             The FPGA allows for a maximum clock frequency of 50MHz.~\cite{Terasic2012}
-            The clock signal in \autoref{fig:FPGA_50MHz} faces similar issues to the 42MHz clock from the microcontroller (distortion and attenuation) but at a slightly greater degree due to being a higher frequency.
+            The clock signal in \autoref{fig:FPGA_50MHz} faces similar issues to the 42MHz clock from the microcontroller (distortion and attenuation) but at a greater degree due to being a higher frequency.
             Since none of these effects occur at lower frequencies, this appears to be a limitation of the probe being used, not the board.
 
         \subsubsection{Final Choice}
-            % TODO discuss extra pros and cons e.g. limited instruction cycles per bit in mc
             Both hardware choices display similar results in testing with clock signals meaning they are both capable of being used to develop a BERT.\@
             The FPGA has a higher maximum clock frequency of 50MHz over the microcontroller's 42MHz suggesting it can be pushed further to test higher bitrates.~\cite{NUCLEO2014,STM2014,Terasic2012}
 
@@ -251,7 +255,7 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
         \subsubsection{Push Button Clock}
 
             For testing purposes, the clock will be controlled by a push button on the DE0-Nano with the status of the LFSR on LEDs.
-            Refer to \autoref{fig:FPGA_CLK_BTN} in the appendices for the Quartus Prime Lite logic diagram.
+            Refer to \autoref{fig:FPGA_CLK_BTN} in the appendices for the logic circuit.
             The initial status of the LFSR is set to 7 ones. 
             The buttons on the FPGA are active low meaning they become logic level 0 when pressed and logic level 1 when released.
             The LSFR status changes when the button is released, not when pressed down.
@@ -270,7 +274,7 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
 
             The 50MHz oscillator on the FPGA is initiated and connected to a Phase Locked Loop (PLL) to divide it by 100, producing a 500kHz clock.
             This signal is fed into the clock input of the PRBS generator.
-            Refer to \autoref{fig:FPGA_CLK_500k} in the appendices for the Quartus Prime Lite logic diagram.
+            Refer to \autoref{fig:FPGA_CLK_500k} in the appendices for the logic circuit.
 
             \begin{figure}[H]
                 \centering
@@ -289,7 +293,7 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
                 \includegraphics[width=1\textwidth]{img/FPGA/PRBS_500kHz_3.png}
                 \caption{Oscilloscope output of PRBS generator at 500kHz. First 7 bits in the figure are the 121\textsuperscript{st}-127\textsuperscript{th} bits of the sequence. Sequence repeats after}\label{fig:FPGA_PRBS_500K_3}
             \end{figure}
-            In \autoref{fig:FPGA_PRBS_500K_1}, \autoref{fig:FPGA_PRBS_500K_2} and \autoref{fig:FPGA_PRBS_500K_3} channel 1 (CH1) is the 500kHz clock signal and channel 2 (CH2) is the output of the PRBS generator.
+            In \autoref{fig:FPGA_PRBS_500K_1}, \autoref{fig:FPGA_PRBS_500K_2} and \autoref{fig:FPGA_PRBS_500K_3} channel 1 (CH1) is the 500kHz clock and channel 2 (CH2) is the PRBS generator output.
             At 500kHz, the oscilloscope probes don't distort the square waveforms.
             When comparing the output to the expected bit sequence, no mistakes are found and the sequence repeats every 127 bits as expected.
 
@@ -297,7 +301,7 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
 
             The 50MHz oscillator on the FPGA is initiated and connected to a PLL to divide it by 5, producing a 10MHz clock.
             This signal is fed into the clock input of the PRBS generator.
-            Refer to \autoref{fig:FPGA_CLK_10M} in the appendices for the Quartus Prime Lite logic diagram.
+            Refer to \autoref{fig:FPGA_CLK_10M} in the appendices for the logic circuit.
 
             \begin{figure}[H]
                 \centering
@@ -317,7 +321,7 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
                 \caption{Oscilloscope output of PRBS generator at 10MHz. First 7 bits in the figure are the 121\textsuperscript{st}-127\textsuperscript{th} bits of the sequence. Sequence repeats after}\label{fig:FPGA_PRBS_10M_3}
             \end{figure}
 
-            In \autoref{fig:FPGA_PRBS_10M_1}, \autoref{fig:FPGA_PRBS_10M_2} and \autoref{fig:FPGA_PRBS_10M_3}, CH1 is the 10MHz clock signal and CH2 is the output of the PRBS generator.
+            In \autoref{fig:FPGA_PRBS_10M_1}, \autoref{fig:FPGA_PRBS_10M_2} and \autoref{fig:FPGA_PRBS_10M_3}, CH1 is the 10MHz clock and CH2 is the PRBS generator output.
             At 10MHz, the oscilloscope probes distort the square waveforms due to high frequency components of the square wave being attenuated.
             The probe used has a -3dB bandwidth of 10MHz.~\cite{R&S2019,JASvoboda2013}
             No mistakes are found when comparing the output to the expected bit sequence and the sequence repeats every 127 bits as expected.
@@ -326,7 +330,7 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
 
             The PLL to multiply the 50MHz oscillator by 2/5, producing a 20MHz clock.
             This signal is fed into the clock input of the PRBS generator.
-            Refer to \autoref{fig:FPGA_CLK_20M} in the appendices for the Quartus Prime Lite logic diagram.
+            Refer to \autoref{fig:FPGA_CLK_20M} in the appendices for the logic circuit.
 
             \begin{figure}[H]
                 \centering
@@ -340,7 +344,7 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
                 \caption{Oscilloscope output of PRBS generator at 20MHz First 7 bits in the figure are the 121\textsuperscript{st}-127\textsuperscript{th} bits of the sequence. Sequence repeats after}\label{fig:FPGA_PRBS_20M_2}
             \end{figure}
 
-            In \autoref{fig:FPGA_PRBS_20M_1} and \autoref{fig:FPGA_PRBS_20M_2}, CH1 is the 20MHz clock and CH2 is the output of the PRBS generator.
+            In \autoref{fig:FPGA_PRBS_20M_1} and \autoref{fig:FPGA_PRBS_20M_2}, CH1 is the 20MHz clock and CH2 is the PRBS generator output.
             At 20MHz, the oscilloscope probes distort the square waveforms due to high frequency components of the square wave being attenuated.
             This happens at a greater degree than at 10MHz.~\cite{JASvoboda2013}
             The bit sequence produced at 20MHz is the same as the expected bit sequence.
@@ -351,12 +355,14 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
         \includegraphics[width=1\textwidth]{img/Gantt_Chart.png}
         \caption{Original Gantt Chart}\label{fig:Gantt_Chart_1}
     \end{figure}
-    The project has mostly gone to plan with tasks like the risk assessment and hardware choice being completed quicker than expected. So far, the tasks have been completed on schedule. There was an overlap in time in hardware decision and PRBS development since generating a clock signal is a part of it. %TODO include original gantt chart from Project proposal, expand on individual tasks
+    The project has mostly gone to plan with tasks like the risk assessment and hardware choice being completed quicker than expected. So far, the tasks have been completed on schedule. There was an overlap in time in hardware decision and PRBS development since generating a clock signal is a part of it. 
+
     \begin{figure}[H]
         \centering
         \includegraphics[width=1\textwidth]{img/Gantt_Chart_2.png}
         \caption{Modified Gantt Chart for objectives in Term 2}\label{fig:Gantt_Chart_2}
     \end{figure}
+
     The tasks for Term 2 have been broken down further.
     Algorithm development for decision regions isn't a priority and will be disregarded if reasonable progress isn't made.
     Bitstream synchronisation must be completed first since it is a required condition for calculating the error ratio.
