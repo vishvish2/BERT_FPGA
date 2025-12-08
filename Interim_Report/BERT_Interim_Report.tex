@@ -10,7 +10,7 @@
 
 \begin{titlepage}
 
-    \title{{Microcontroller-based}\\{Bit Error Rate Test set}}
+    \title{{Microcontroller-based}\\{Bit Error Rate Test set}}  %TODO title low cost/FPGA based
     \author{Vishnu Barath}
     \date{}
     \maketitle
@@ -35,7 +35,9 @@
         Signed: Vishnu Barath \hfill Date: \date{\today}
     
     \clearpage
-    \tableofcontents   
+    \tableofcontents
+    %TODO abstract - summarise what's been done so far  (before contents)
+    %TODO start major headings on new pages for readability
 
     \section{Project Description}
         Communication networks are continuously expanding in capacity and speed and being able to ensure signal integrity is paramount.
@@ -52,12 +54,14 @@
         Unfortunately, systems that can measure the BER can be expensive and would be designed for data rates in the Gb/s range.
         As a result acquiring such equipment could prove difficult and would be excessive since such high data rates aren't always required.~\cite{MJBasford2020}
         
-        This project aims to construct a system that can accurately measure the BER of a Visible Light Communication (VLC) channel at data rates up to 10Mb/s, while keeping costs relatively low.
+        This project aims to construct a system that can accurately measure the BER of a Visible Light Communication (VLC) channel at data rates up to 10Mb/s, while keeping costs relatively low. %TODO restate goals and objectives from proposal
     
     \section{Literature Review}
         Building a system to measure a channel's BER can be done via any programmable device such as Microcontrollers or Field Programmable Gate Arrays (FPGA).
         Low cost BERTs have been developed using such devices.~\cite{MJBasford2020, SChatterjee2023, NMarda2014}
         Examples of these are discussed below.
+        %TODO describe PRBS, include overall block diagram of the system
+        %Whats and FPGA and MC, compare pros and cons
 
         \subsection{Serial Communication BER Tester}
             An FPGA-based device was developed to test the BER of a serial communication channel.
@@ -84,6 +88,7 @@
             As a result of using a periodic square wave, the issue of synchronising the transmitted and received bitstreams is simplified.
             This system has significantly smaller cost and complexity in comparison to FPGA equivalents.
             Unfortunately, in reality, bitstreams won't be sequential ones and zeros and would appear more random, meaning the displayed error rate may not necessarily reflect real world conditions for data transmission.~\cite{SChatterjee2023}
+            %TODO refer to papers again later maybe
         
         \subsection{Microcontroller-based BER}
             An STM32 Microcontroller combined with a Complex Programmable Logic Device (CPLD) was used to make a BER tester.
@@ -105,7 +110,7 @@
     
         \subsection{Choice of Hardware}
             In this project, there is choice of hardware between using Microcontrollers or FPGAs.
-            To determine which is suitable, the capabilities of a device of each were tested using a 10MHz clock signal, which would allow for data rate of 10Mbps.
+            To determine which is suitable, the capabilities of a device of each were tested using a 10MHz clock signal, which would allow for data rate of 10Mbps. %TODO explain how (bit transfers on rising edge of clock)
 
             \subsubsection{MC}
                 The board being tested here is the NUCLEO-F401RE board which has an STM32F401RET6 Microcontroller using the Serial Peripheral Interface (SPI) synchronous serial communication protocol.~\cite{NUCLEO2014,STM2014}
@@ -177,11 +182,13 @@
                 The clock signal in Figure 6 faces similar issues to the 42MHz clock from the microcontroller (distortion and attenuation) but a slightly greater degree due to being a higher frequency.
                 Since none of these effects occur at a lower frequency, this appears to be a limitation of the probe being used, not the board.
 
+                % TODO discuss extra pros and cons e.g. limited instruction cycles per bit in mc
                 Both choices of hardware display similar results in testing with clock signals suggesting they are both adequately capable of being used to develop a BERT set.
                 The FPGA has a higher maximum clock frequency of 50MHz over the microcontroller's 42MHz suggesting it can be pushed further to test higher data rates.~\cite{NUCLEO2014,STM2014,Terasic2012}
                 Considering the low level of programming required for this project, the FPGA has been chosen to develop the BERT.\@
         
         \subsection{PRBS generator}
+            %TODO expand on PRBS, include in literature review
             For this project, a PRBS generator will be used to generate a bitstream for the BERT.\@
             At this point in time, a PRBS-7 generator has been made.
             A PRBS-7 would repeat every 127 bits and is represented by the following polynomial.~\cite{DRiccardi2011}
@@ -244,7 +251,7 @@
                     \includegraphics[width=1\textwidth]{img/FPGA/PRBS_500kHz_3.png}
                     \caption{Oscilloscope output of PRBS generator at 500kHz. First 7 bits in the figure are the 121st to 127th bits of the sequence. Sequence repeats after this}
                 \end{figure}
-                In Figures 9, 10 and 11, channel 1 (CH1) is tied to the clock signal and channel 2 (CH2) is tied to the output of the PRBS generator.
+                In Figures 9, 10 and 11, channel 1 (CH1) is tied to the 500kHz clock signal and channel 2 (CH2) is tied to the output of the PRBS generator.
                 At 500kHz, the oscilloscope probes don't distort the square waveforms.
                 When comparing the output to the expected bit sequence, no mistakes are found and the sequence repeats every 127 bits as expected.
 
@@ -277,7 +284,7 @@
                     \caption{Oscilloscope output of PRBS generator at 10MHz. First 7 bits in the figure are the 121st to 127th bits of the sequence. Sequence repeats after this}
                 \end{figure}
 
-                In Figures 13, 14 and 15, CH1 is tied to the clock signal and CH2 is tied to the output of the PRBS generator.
+                In Figures 13, 14 and 15, CH1 is tied to the 10MHz clock signal and CH2 is tied to the output of the PRBS generator.
                 At 10MHz, the oscilloscope probes distort the square waveforms due to high frequency components of the square wave being attenuated.
                 The probe used has a -3dB bandwidth of 10MHz.~\cite{R&S2019,JASvoboda2013}
                 No mistakes are found when comparing the output to the expected bit sequence and the sequence repeats every 127 bits as expected.
@@ -305,13 +312,13 @@
                     \caption{Oscilloscope output of PRBS generator at 20MHz First 7 bits in the figure are the 121st to 127th bits of the sequence. Sequence repeats after this}
                 \end{figure}
 
-                In Figures 16, 17 and 18, CH1 is tied to the clock signal and CH2 is tied to the output of the PRBS generator.
+                In Figures 16, 17 and 18, CH1 is tied to the 20MHz clock signal and CH2 is tied to the output of the PRBS generator.
                 At 20MHz, the oscilloscope probes distort the square waveforms due to high frequency components of the square wave being attenuated.
                 This happens at a much greater degree than at 10MHz.~\cite{JASvoboda2013}
                 The bit sequence produced at 20MHz is the same as the expected bit sequence.
                             
     \section{Project Management}
-        The project has mostly gone to plan with tasks like the risk assessment and hardware choice being completed slightly quicker than expected.
+        The project has mostly gone to plan with tasks like the risk assessment and hardware choice being completed slightly quicker than expected. %TODO include original gantt chart from Project proposal, expand on individual tasks
         \begin{figure}[H]
             \centering
             \includegraphics[width=1\textwidth]{img/Gantt_Chart_2.png}
@@ -322,8 +329,9 @@
         Algorithm development for decision regions is not a priority and will be disregarded if reasonable progress isn't made.
 
     \section{Future Work}
+    %TODO Include summary/conclusion section (this project is about FPGA based BERT, i've demonstrated a PRBS gen at 2^7 -1)
 
     \bibliographystyle{IEEEtran} % IEEE style
-    \bibliography{references}
+    \bibliography{references} %TODO include a date downloaded for "available" links
 
 \end{document}
