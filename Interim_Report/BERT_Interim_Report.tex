@@ -5,6 +5,7 @@
 \usepackage{hyperref} % For links
 \usepackage{float} % For image placement
 \usepackage{breqn}
+\usepackage{booktabs}
 
 \begin{document}
 
@@ -36,9 +37,11 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
 
 \clearpage
 \begin{abstract}
-    The main aim of this project is to build a low-cost system that can test the Bit Error Ratio of a communication channel using a Pseudorandom Binary Sequence generator.
+    The main aim of this project is to build a low-cost system that can test the Bit Error Ratio (BER) of a communication channel.
+    It will use Pseudorandom Binary Sequence (PRBS) generators to generate a known bitstream which would then be transmitted across a communication channel. 
+    The sequence will be generated on both the transmitter and the receiver to compare them and calculate the BER.\@
     So far, a transmitter has been successfully developed which generates a repeating PRBS-7 sequence with a length of 127 bits.
-    The PRBS generator is controlled by a 10MHz clock signal where a bit is transferred at every rising edge, achieving a data rate of 10Mbps.
+    The PRBS generator is implemented using a Linear Feedback Shift Register controlled by a 10MHz clock signal where a bit is transferred at every rising edge, achieving a data rate of 10Mbps.
     This has been implemented on an FPGA.\@
 \end{abstract}
 
@@ -215,10 +218,28 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
             The clock signal in \autoref{fig:FPGA_50MHz} faces similar issues to the 42MHz clock from the microcontroller (distortion and attenuation) but a slightly greater degree due to being a higher frequency.
             Since none of these effects occur at a lower frequency, this appears to be a limitation of the probe being used, not the board.
 
+        \subsubsection{Final Choice}
             % TODO discuss extra pros and cons e.g. limited instruction cycles per bit in mc
             Both choices of hardware display similar results in testing with clock signals suggesting they are both adequately capable of being used to develop a BERT set.
             The FPGA has a higher maximum clock frequency of 50MHz over the microcontroller's 42MHz suggesting it can be pushed further to test higher data rates.~\cite{NUCLEO2014,STM2014,Terasic2012}
-            Considering the low level of programming required for this project, the FPGA has been chosen to develop the BERT.\@
+
+            Microcontrollers tend to be programmed in higher level programming languages than FPGAs, meaning they are easier to work with.
+            However, this provides minimal control over the lower level logic.
+            FPGAs allow for a much higher degree of control by working directly at the logic circuit level, but this makes them harder to program than microcontrollers.
+
+            Microcontrollers also have many peripherals you can work with, including UART, ADCs and serial communication interfaces such as I2C and SPI.\@
+            These peripherals are designed for transferring bitstreams synchronised to a clock signal.
+            On the other hand, these peripherals have complex workings which means a certain clock rate may not directly translate to the same data rate.
+            Transferring one bit may take more than one clock cycle.
+            FPGAs don't have any of these peripherals since they work directly at the logic circuit level.
+            Despite being difficult to program, logic circuits can be designed in a way that allows for one bit to be transferred per clock cycle.~\cite{STM2014,Terasic2012}
+            When working with registers, a low level of programming is required for direct control.
+            Microcontrollers tend to be much cheaper than FPGAs, and achieving low costs is one of the aims of this project.
+            However, in comparison to the price of industry standard BER equipment, this difference in price is small, meaning despite the choice of hardware here, the costs will most likely be relatively low.~\cite{MJBasford2020,SChatterjee2023}
+            
+            In this project, a Linear Shift Feedback Register would be required for PRBS generation, meaning direct control over logic is necessary.
+            The clock rates available are in the Megahertz range rather than Gigahertz, so it would be ideal to make efficient use of clock cycles.
+            Considering these factors, the FPGA has been chosen to develop the BERT.\@
     
     \subsection{PRBS generator}
         For this project, a PRBS generator will be used to generate a bitstream for the BERT.\@
