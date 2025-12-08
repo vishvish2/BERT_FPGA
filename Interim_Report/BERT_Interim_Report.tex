@@ -39,6 +39,7 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
     The main aim of this project is to build a low-cost system that can test the Bit Error Ratio of a communication channel using a Pseudorandom Binary Sequence generator.
     So far, a transmitter has been successfully developed which generates a repeating PRBS-7 sequence with a length of 127 bits.
     The PRBS generator is controlled by a 10MHz clock signal where a bit is transferred at every rising edge, achieving a data rate of 10Mbps.
+    This has been implemented on an FPGA.\@
 \end{abstract}
 
 \tableofcontents
@@ -87,8 +88,6 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
     Such sequences are generated using a Linear Feedback Shift Register (LFSR) where two specific bits in the register are fed into an XOR or XNOR gate and fed back into the Least Significant Bit (LSB) of the register.~\cite{DRiccardi2011,MGeorge2007}
     Low cost BERTs have been developed using such methods.~\cite{MJBasford2020, SChatterjee2023, NMarda2014}
     Examples of these are discussed below.
-    %TODO describe PRBS, include overall block diagram of the system
-    %Whats and FPGA and MC, compare pros and cons
 
     \subsection{Serial Communication BER Tester}
         An FPGA-based device was developed to test the BER of a serial communication channel.
@@ -126,11 +125,18 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
         This data rate is similar to the data rate this project is targetting.
         Due to using only one device, this may not accurately simulate real world conditions.
 
-    \vspace{0.5cm}
+    \subsection{Summary}
+        Overall, both FPGAs and Microcontrollers seem as valid options in building a BER tester since they can both be programmed to transmit and receive a PRBS and compare bitstreams.
+        In order to best simulate real world data transmission, two separate devices for transmitting and receiving would be ideal.
+        While this may increase cost, relative to the price of BER equipment, it shouldn't be significant.~\cite{MJBasford2020,SChatterjee2023}
+        A PRBS generator will be used to generate a bitstream that will be used for calculating the BER.\@
+        \autoref{fig:BERT_Block} gives an overview of the proposed system.
 
-    Overall, both FPGAs and Microcontrollers seem as valid options in building a BER tester since they can both be programmed to transmit and receive a PRBS and compare bitstreams.
-    However, in order to best simulate real world data transmission, two separate devices for transmitting and receiving would be ideal.
-    While this may increase cost, relative to the price of BER equipment, it shouldn't be significant.~\cite{MJBasford2020,SChatterjee2023}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{img/BERT_Block_Diagram.png}
+            \caption{Block Diagram of proposed BER Testing system}\label{fig:BERT_Block}
+        \end{figure}
         
 \clearpage
 \section{Work Performed to-date}
@@ -226,6 +232,7 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
         What this polynomial means is that the 7th and 6th bits of the register are inputs to an XOR gate where the output is fed into the Least Significant Bit (LSB) of the shift register.
         The Most Significant Bit (MSB) of the LFSR is transmitted to the communication channel.~\cite{DRiccardi2011,MGeorge2007}
         This can be implemented using D-Type Flip Flops in Quartus Prime.
+        Typically, a much larger LSFR would be used to generate a PRBS in order to achieve a higher degree of randomness, as demonstrated in the Serial Communication BER Tester mentioned previously.~\cite{MJBasford2020}
         \subsubsection{Push Button Clock}
 
             For testing purposes, the clock will initially be tied to a push button on the DE0-Nano with the status of the LFSR tied to LEDs.
