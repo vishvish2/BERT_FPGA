@@ -141,7 +141,7 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
 
     \subsection{Choice of Hardware}
         In this project, there is choice between using Microcontrollers or FPGAs.
-        To determine which is suitable, the capabilities of a device of each were tested using a 10MHz clock signal. If a bitstream is synchronised to this clock signal, each bit would be transferred on the rising edge of the clock, allowing for a bitrate of 10Mbps.
+        To determine which is suitable, the capabilities of a device of each were tested using a 10MHz clock. If a bitstream is synchronised to this clock, each bit would be transferred on the rising edge of the clock, allowing for a bitrate of 10Mbps.
 
         \subsubsection{MC}
             The board being tested here is the NUCLEO-F401RE board which has an STM32F401RET6 Microcontroller using the Serial Peripheral Interface (SPI) synchronous serial communication protocol.~\cite{NUCLEO2014,STM2014}
@@ -153,9 +153,9 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
                 \caption{Oscilloscope capture of 10MHz clock from NUCLEO-F401RE}\label{fig:10MHz_MC}
             \end{figure}
 
-            In \autoref{fig:10MHz_MC}, the clock signal is the correct frequency with an adequate peak-to-peak voltage.
+            In \autoref{fig:10MHz_MC}, the clock is the correct frequency with an adequate peak-to-peak voltage.
             However, the signal appears to rise and fall exponentially rather than instantaneously like a typical square wave would.
-            Different frequency clock signals need to be tested for this effect.
+            Different frequency clocks need to be tested for this effect.
 
             \begin{figure}[H]
                 \centering
@@ -163,7 +163,7 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
                 \caption{Oscilloscope capture of 500kHz clock from NUCLEO-F401RE}\label{fig:500kHz_MC}
             \end{figure}
 
-            \autoref{fig:500kHz_MC}, shows the microcontroller producing a conventional square wave clock signal at 500kHz, suggesting that there is a limitation in the measurement equipment. 
+            \autoref{fig:500kHz_MC}, shows the microcontroller producing a square wave clock signal at 500kHz, suggesting that there is a limitation in the measurement equipment. 
 
             \begin{figure}[H]
                 \centering
@@ -175,7 +175,7 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
             The signal is almost triangular, but still holds a fundamental frequency of 42MHz.
             However, the peak-to-peak voltage (2.14V) is attenuated compared to that at 10MHz (3.36V) in \autoref{fig:10MHz_MC} and 500kHz (3.48V) in \autoref{fig:500kHz_MC}.
 
-            The oscilloscope probe being used (RT-ZPO3) has a -3dB bandwidth of 10MHz which explains the distortion in the 10MHz and 42MHz clock signals.~\cite{R&S2019}
+            The oscilloscope probe being used (RT-ZPO3) has a -3dB bandwidth of 10MHz which explains the distortion in the 10MHz and 42MHz clocks.~\cite{R&S2019}
             This is because the Fourier Series of a square wave, along with its fundamental frequency, has other higher frequencies that allow the wave to be square.~\cite{JASvoboda2013}
             So even in a 10MHz square wave, which is exactly at the cut-off frequency, there are high frequency harmonics which allow for the wave to be square.
             These frequencies are attenuated, giving the output in \autoref{fig:10MHz_MC}.
@@ -215,22 +215,21 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
 
         \subsubsection{Final Choice}
             % TODO discuss extra pros and cons e.g. limited instruction cycles per bit in mc
-            Both choices of hardware display similar results in testing with clock signals suggesting they are both adequately capable of being used to develop a BERT set.
-            The FPGA has a higher maximum clock frequency of 50MHz over the microcontroller's 42MHz suggesting it can be pushed further to test higher data rates.~\cite{NUCLEO2014,STM2014,Terasic2012}
+            Both hardware choices display similar results in testing with clock signals meaning they are both capable of being used to develop a BERT.\@
+            The FPGA has a higher maximum clock frequency of 50MHz over the microcontroller's 42MHz suggesting it can be pushed further to test higher bitrates.~\cite{NUCLEO2014,STM2014,Terasic2012}
 
-            Microcontrollers tend to be programmed in higher level programming languages than FPGAs, meaning they are easier to work with.
+            Microcontrollers are programmed in higher level programming languages than FPGAs, meaning they are easier to work with.
             However, this provides minimal control over the lower level logic.
-            FPGAs allow for a much higher degree of control by working directly at the logic circuit level, but this makes them harder to program than microcontrollers.
+            FPGAs allow for a higher degree of control by working directly at the logic circuit level, but this makes them harder to program.
 
-            Microcontrollers also have many peripherals you can work with, including UART, ADCs and serial communication interfaces such as I2C and SPI.\@
+            Microcontrollers also have peripherals you can work with, including UART, ADCs and interfaces such as I2C and SPI.\@
             These peripherals are designed for transferring bitstreams synchronised to a clock signal.
-            On the other hand, these peripherals have complex workings which means a certain clock rate may not directly translate to the same data rate.
-            Transferring one bit may take more than one clock cycle.
+            On the other hand, these peripherals have complex workings which may require more than one clock cycle per transferred bit.
             The FPGA being used has an ADC but no other peripherals since it works directly at the logic circuit level.
             Despite being difficult to program, logic circuits can be designed in a way that allows for one bit to be transferred per clock cycle.~\cite{STM2014,Terasic2012}
             When working with registers, a low level of programming is required for direct control.
-            Microcontrollers tend to be much cheaper than FPGAs, and achieving low costs is one of the aims of this project.
-            However, in comparison to the price of industry standard BER equipment, this difference in price is small, meaning despite the choice of hardware here, the costs will most likely be relatively low.~\cite{MJBasford2020,SChatterjee2023}
+            Microcontrollers tend to be cheaper than FPGAs, and low cost is one of the aims of this project.
+            However, compared to the price of BER equipment, this difference in price is small, meaning despite the choice of hardware, the costs will most likely be relatively low.~\cite{MJBasford2020,SChatterjee2023}
             
             In this project, an LSFR would be required for PRBS generation, meaning direct control over logic is necessary.
             The clock rates available are in the Megahertz range rather than Gigahertz, so it would be ideal to make efficient use of clock cycles.
@@ -239,24 +238,24 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
     \subsection{PRBS generator}
         For this project, a PRBS generator will be used to generate a bitstream for the BERT.\@
         At this point in time, a PRBS-7 generator has been made.
-        A PRBS-7 would repeat every 127 bits and is represented by the following polynomial.~\cite{DRiccardi2011}
+        It repeats every 127 bits and is represented by the following polynomial.~\cite{DRiccardi2011}
         \begin{equation}
             x^7 + x^6 + 1
         \end{equation}
         This polynomial isn't mathematical, it is a representation of the LFSR that would be used to generate a PRBS-7.
-        The values of the powers represent which bits are used for the feedback.
-        What this polynomial means is that the 7th and 6th bits of the register are inputs to an XOR gate where the output is fed into the Least Significant Bit (LSB) of the shift register.
+        The values of the powers represent which bits are used for feedback.
+        This polynomial says that the 7th and 6th bits of the register are inputs to an XOR gate where the output is fed into the Least Significant Bit (LSB) of the shift register.
         The Most Significant Bit (MSB) of the LFSR is transmitted to the communication channel.~\cite{DRiccardi2011,MGeorge2007}
-        This can be implemented using D-Type Flip Flops in Quartus Prime.
-        Typically, a much larger LSFR would be used to generate a PRBS in order to achieve a higher degree of randomness, as demonstrated in the Serial Communication BER Tester mentioned previously.~\cite{MJBasford2020}
+        This can be implemented using D-Type Flip-Flops in Quartus Prime.
+        Typically, larger LSFRs would be used to generate a PRBS in order to achieve a higher degree of randomness, as demonstrated in the Serial Communication BER Tester mentioned previously.~\cite{MJBasford2020}
         \subsubsection{Push Button Clock}
 
-            For testing purposes, the clock will initially be tied to a push button on the DE0-Nano with the status of the LFSR tied to LEDs.
+            For testing purposes, the clock will be controlled by a push button on the DE0-Nano with the status of the LFSR on LEDs.
             Refer to \autoref{fig:FPGA_CLK_BTN} in the appendices for the Quartus Prime Lite logic diagram.
             The initial status of the LFSR is set to 7 ones. 
-            The buttons on the FPGA are active low meaning they become logic level 0 when pressed and logic level one when released.
-            The LSFR status varies when the button is released, not when pressed down.
-            This means the PRBS generator is synchronised to the rising edge of the clock signal which is the expected behaviour.
+            The buttons on the FPGA are active low meaning they become logic level 0 when pressed and logic level 1 when released.
+            The LSFR status changes when the button is released, not when pressed down.
+            This means the PRBS generator is synchronised to the rising edge of the clock which is expected behaviour.
             Once the button is pressed 127 times, the LSFR's status returns to the original state of 7 ones.
             Hence, PRBS generator is producing a repetitive bit sequence of length 127, which is also expected.
 
@@ -269,7 +268,7 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
 
         \subsubsection{500kHz Clock}
 
-            The 50MHz oscillator on the FPGA is initiated and connected to a Phase Locked Loop (PLL) to divide it by 100, producing a 500kHz clock signal.
+            The 50MHz oscillator on the FPGA is initiated and connected to a Phase Locked Loop (PLL) to divide it by 100, producing a 500kHz clock.
             This signal is fed into the clock input of the PRBS generator.
             Refer to \autoref{fig:FPGA_CLK_500k} in the appendices for the Quartus Prime Lite logic diagram.
 
@@ -282,21 +281,21 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
             \begin{figure}[H]
                 \centering
                 \includegraphics[width=0.9\textwidth]{img/FPGA/PRBS_500kHz_2.png}
-                \caption{Oscilloscope output of PRBS generator at 500kHz (61st to 120th bits)}\label{fig:FPGA_PRBS_500K_2}
+                \caption{Oscilloscope output of PRBS generator at 500kHz (61\textsuperscript{st}-120\textsuperscript{th} bits)}\label{fig:FPGA_PRBS_500K_2}
             \end{figure}
 
             \begin{figure}[H]
                 \centering
                 \includegraphics[width=1\textwidth]{img/FPGA/PRBS_500kHz_3.png}
-                \caption{Oscilloscope output of PRBS generator at 500kHz. First 7 bits in the figure are the 121st to 127th bits of the sequence. Sequence repeats after this}\label{fig:FPGA_PRBS_500K_3}
+                \caption{Oscilloscope output of PRBS generator at 500kHz. First 7 bits in the figure are the 121\textsuperscript{st}-127\textsuperscript{th} bits of the sequence. Sequence repeats after}\label{fig:FPGA_PRBS_500K_3}
             \end{figure}
-            In \autoref{fig:FPGA_PRBS_500K_1}, \autoref{fig:FPGA_PRBS_500K_2} and \autoref{fig:FPGA_PRBS_500K_3} channel 1 (CH1) is tied to the 500kHz clock signal and channel 2 (CH2) is tied to the output of the PRBS generator.
+            In \autoref{fig:FPGA_PRBS_500K_1}, \autoref{fig:FPGA_PRBS_500K_2} and \autoref{fig:FPGA_PRBS_500K_3} channel 1 (CH1) is the 500kHz clock signal and channel 2 (CH2) is the output of the PRBS generator.
             At 500kHz, the oscilloscope probes don't distort the square waveforms.
             When comparing the output to the expected bit sequence, no mistakes are found and the sequence repeats every 127 bits as expected.
 
         \subsubsection{10MHz Clock}
 
-            The 50MHz oscillator on the FPGA is initiated and connected to a PLL to divide it by 5, producing a 10MHz clock signal.
+            The 50MHz oscillator on the FPGA is initiated and connected to a PLL to divide it by 5, producing a 10MHz clock.
             This signal is fed into the clock input of the PRBS generator.
             Refer to \autoref{fig:FPGA_CLK_10M} in the appendices for the Quartus Prime Lite logic diagram.
 
@@ -309,23 +308,23 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
             \begin{figure}[H]
                 \centering
                 \includegraphics[width=0.9\textwidth]{img/FPGA/PRBS_10MHz_2.png}
-                \caption{Oscilloscope output of PRBS generator at 10MHz (61st to 120th bits)}\label{fig:FPGA_PRBS_10M_2}
+                \caption{Oscilloscope output of PRBS generator at 10MHz (61\textsuperscript{st}-120\textsuperscript{th} bits)}\label{fig:FPGA_PRBS_10M_2}
             \end{figure}
 
             \begin{figure}[H]
                 \centering
                 \includegraphics[width=0.9\textwidth]{img/FPGA/PRBS_10MHz_3.png}
-                \caption{Oscilloscope output of PRBS generator at 10MHz. First 7 bits in the figure are the 121st to 127th bits of the sequence. Sequence repeats after this}\label{fig:FPGA_PRBS_10M_3}
+                \caption{Oscilloscope output of PRBS generator at 10MHz. First 7 bits in the figure are the 121\textsuperscript{st}-127\textsuperscript{th} bits of the sequence. Sequence repeats after}\label{fig:FPGA_PRBS_10M_3}
             \end{figure}
 
-            In \autoref{fig:FPGA_PRBS_10M_1}, \autoref{fig:FPGA_PRBS_10M_2} and \autoref{fig:FPGA_PRBS_10M_3}, CH1 is tied to the 10MHz clock signal and CH2 is tied to the output of the PRBS generator.
+            In \autoref{fig:FPGA_PRBS_10M_1}, \autoref{fig:FPGA_PRBS_10M_2} and \autoref{fig:FPGA_PRBS_10M_3}, CH1 is the 10MHz clock signal and CH2 is the output of the PRBS generator.
             At 10MHz, the oscilloscope probes distort the square waveforms due to high frequency components of the square wave being attenuated.
             The probe used has a -3dB bandwidth of 10MHz.~\cite{R&S2019,JASvoboda2013}
             No mistakes are found when comparing the output to the expected bit sequence and the sequence repeats every 127 bits as expected.
 
         \subsubsection{20MHz Clock}
 
-            The PLL to multiply the 50MHz oscillator by 2/5, producing a 20MHz clock signal.
+            The PLL to multiply the 50MHz oscillator by 2/5, producing a 20MHz clock.
             This signal is fed into the clock input of the PRBS generator.
             Refer to \autoref{fig:FPGA_CLK_20M} in the appendices for the Quartus Prime Lite logic diagram.
 
@@ -338,21 +337,21 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
             \begin{figure}[H]
                 \centering
                 \includegraphics[width=0.9\textwidth]{img/FPGA/PRBS_20MHz_2.png}
-                \caption{Oscilloscope output of PRBS generator at 20MHz First 7 bits in the figure are the 121st to 127th bits of the sequence. Sequence repeats after this}\label{fig:FPGA_PRBS_20M_2}
+                \caption{Oscilloscope output of PRBS generator at 20MHz First 7 bits in the figure are the 121\textsuperscript{st}-127\textsuperscript{th} bits of the sequence. Sequence repeats after}\label{fig:FPGA_PRBS_20M_2}
             \end{figure}
 
-            In \autoref{fig:FPGA_PRBS_20M_1} and \autoref{fig:FPGA_PRBS_20M_2}, CH1 is tied to the 20MHz clock signal and CH2 is tied to the output of the PRBS generator.
+            In \autoref{fig:FPGA_PRBS_20M_1} and \autoref{fig:FPGA_PRBS_20M_2}, CH1 is the 20MHz clock and CH2 is the output of the PRBS generator.
             At 20MHz, the oscilloscope probes distort the square waveforms due to high frequency components of the square wave being attenuated.
-            This happens at a much greater degree than at 10MHz.~\cite{JASvoboda2013}
+            This happens at a greater degree than at 10MHz.~\cite{JASvoboda2013}
             The bit sequence produced at 20MHz is the same as the expected bit sequence.
                         
 \section{Project Management}
     \begin{figure}[H]
         \centering
         \includegraphics[width=1\textwidth]{img/Gantt_Chart.png}
-        \caption{Original Gantt Chart for objectives in Terms 1 and 2}\label{fig:Gantt_Chart_1}
+        \caption{Original Gantt Chart}\label{fig:Gantt_Chart_1}
     \end{figure}
-    The project has mostly gone to plan with tasks like the risk assessment and hardware choice being completed slightly quicker than expected. So far, the tasks have been completed on schedule. There was an overlap in time in hardware decision and PRBS development since generating a clock signal is a part of it. %TODO include original gantt chart from Project proposal, expand on individual tasks
+    The project has mostly gone to plan with tasks like the risk assessment and hardware choice being completed quicker than expected. So far, the tasks have been completed on schedule. There was an overlap in time in hardware decision and PRBS development since generating a clock signal is a part of it. %TODO include original gantt chart from Project proposal, expand on individual tasks
     \begin{figure}[H]
         \centering
         \includegraphics[width=1\textwidth]{img/Gantt_Chart_2.png}
@@ -386,19 +385,19 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
     \begin{figure}[H]
         \centering
         \includegraphics[width=1\textwidth]{img/FPGA/PRBS_CLK_500kHz.png}
-        \caption{PRBS Generator implemented on Quartus Prime Lite with a 500kHz clock signal}\label{fig:FPGA_CLK_500k}
+        \caption{PRBS Generator implemented on Quartus Prime Lite with a 500kHz clock}\label{fig:FPGA_CLK_500k}
     \end{figure}
 
     \begin{figure}[H]
         \centering
         \includegraphics[width=1\textwidth]{img/FPGA/PRBS_CLK_10MHz.png}
-        \caption{PRBS Generator implemented on Quartus Prime Lite with a 10MHz clock signal}\label{fig:FPGA_CLK_10M}
+        \caption{PRBS Generator implemented on Quartus Prime Lite with a 10MHz clock}\label{fig:FPGA_CLK_10M}
     \end{figure}
 
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.9\textwidth]{img/FPGA/PRBS_CLK_20MHz.png}
-        \caption{PRBS Generator implemented on Quartus Prime Lite with a 20MHz clock signal}\label{fig:FPGA_CLK_20M}
+        \caption{PRBS Generator implemented on Quartus Prime Lite with a 20MHz clock}\label{fig:FPGA_CLK_20M}
     \end{figure}
 
 \end{document}
