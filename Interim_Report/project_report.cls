@@ -119,13 +119,13 @@
 	\noindent Signed:
 	\begin{minipage}[t]{15em}
 		\centering
-		\rule{\textwidth}{0.5pt} \newline
+		% \rule{\textwidth}{0.5pt} \newline
 		% replace the line above with 
-		%\rule{\textwidth}{0.5pt} \hspace{-14em}\rule{0pt}{-3ex} \includegraphics[width=13em]{signature}
+		\rule{\textwidth}{0.5pt} \hspace{-14em}\rule{0pt}{-3ex} \includegraphics[width=7em]{signature}
 		\newline
 		(Student)
 	\end{minipage}
-	\hspace{\fill} Date: \rule{9em}{0.5pt} \newline
+	\hspace{\fill} Date: \today \newline
 
 	\vspace{\fill}
 
