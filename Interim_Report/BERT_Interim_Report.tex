@@ -87,7 +87,7 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
 \section{Literature Review}
     Building a system to measure a channel's BER can be done via any programmable device such as Microcontrollers or Field Programmable Gate Arrays (FPGA).
     A sequence of known bits is required for testing a BER.\@
-    One common method for generating one is the Pseudorandom Binary Sequence generator (PRBS).
+    One common method for generating one is the PRBS.\@
     Such sequences are generated using a Linear Feedback Shift Register (LFSR) where two specific bits in the register are fed into an XOR or XNOR gate and fed back into the Least Significant Bit (LSB) of the register.~\cite{DRiccardi2011,MGeorge2007}
     Low cost BERTs have been developed using such methods.~\cite{MJBasford2020, SChatterjee2023, NMarda2014}
     Examples of these are discussed below.
@@ -231,13 +231,13 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
             These peripherals are designed for transferring bitstreams synchronised to a clock signal.
             On the other hand, these peripherals have complex workings which means a certain clock rate may not directly translate to the same data rate.
             Transferring one bit may take more than one clock cycle.
-            FPGAs don't have any of these peripherals since they work directly at the logic circuit level.
+            The FPGA being used has an ADC but no other peripherals since it works directly at the logic circuit level.
             Despite being difficult to program, logic circuits can be designed in a way that allows for one bit to be transferred per clock cycle.~\cite{STM2014,Terasic2012}
             When working with registers, a low level of programming is required for direct control.
             Microcontrollers tend to be much cheaper than FPGAs, and achieving low costs is one of the aims of this project.
             However, in comparison to the price of industry standard BER equipment, this difference in price is small, meaning despite the choice of hardware here, the costs will most likely be relatively low.~\cite{MJBasford2020,SChatterjee2023}
             
-            In this project, a Linear Shift Feedback Register would be required for PRBS generation, meaning direct control over logic is necessary.
+            In this project, an LSFR would be required for PRBS generation, meaning direct control over logic is necessary.
             The clock rates available are in the Megahertz range rather than Gigahertz, so it would be ideal to make efficient use of clock cycles.
             Considering these factors, the FPGA has been chosen to develop the BERT.\@
     
@@ -357,17 +357,21 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
         \includegraphics[width=1\textwidth]{img/Gantt_Chart.png}
         \caption{Original Gantt Chart for objectives in Terms 1 and 2}\label{fig:Gantt_Chart_1}
     \end{figure}
-    The project has mostly gone to plan with tasks like the risk assessment and hardware choice being completed slightly quicker than expected. %TODO include original gantt chart from Project proposal, expand on individual tasks
+    The project has mostly gone to plan with tasks like the risk assessment and hardware choice being completed slightly quicker than expected. So far, the tasks have been completed on schedule. There was an overlap in time in hardware decision and PRBS development since generating a clock signal is a part of it. %TODO include original gantt chart from Project proposal, expand on individual tasks
     \begin{figure}[H]
         \centering
         \includegraphics[width=1\textwidth]{img/Gantt_Chart_2.png}
         \caption{Modified Gantt Chart for objectives in Term 2}\label{fig:Gantt_Chart_2}
     \end{figure}
     The tasks for Term 2 have been broken down further.
-    The most time has been allocated to developing an algorithm for the error ratio calculation since it is the primary goal of this project.
     Algorithm development for decision regions is not a priority and will be disregarded if reasonable progress isn't made.
+    Bitstream synchronisation must be completed first since it is a required condition for calculating the error ratio.
+    These parts will be the most difficult hence the most time has been allocated to them.
 
 \section{Future Work}
+    For the decision regions, a simple voltage threshold will be used where anything above would be considered logic 1 and below would be considered logic 0. This would require using an ADC to read a voltage level.
+    In bitstream synchronisation, a method of aligning the beginning of the received and generated PRBS needs to be developed.
+    For error rate calculations, a fixed number of bits would need to be set for which the received and generated bitstreams are compared for to display an error rate as a number.
 %TODO Include summary/conclusion section (this project is about FPGA based BERT, i've demonstrated a PRBS gen at 2^7 -1)
 
 \bibliographystyle{IEEEtran} % IEEE style
@@ -380,7 +384,7 @@ Signed: Vishnu Barath \hfill Date: \date{\today}
     \begin{figure}[H]
         \centering
         \includegraphics[width=1\textwidth]{img/FPGA/PRBS_CLK_BTN.png}
-        \caption{PRBS Generator implemented on Quartus Prime Lite with the clock tied to a push button}\label{fig:FPGA_CLK_BTN}
+        \caption{PRBS Generator on Quartus Prime Lite with the clock tied to a push button}\label{fig:FPGA_CLK_BTN}
 
     \end{figure}
 
