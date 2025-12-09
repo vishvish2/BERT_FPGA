@@ -13,7 +13,7 @@
 \supervisor{Martyn Fice}
 %\advisor{My advisor}
 \aiuse{}
-\wordcount{2496} % TODO
+\wordcount{2497}
 
 \begin{document}
 
@@ -127,8 +127,8 @@
 \clearpage
 \section{Work Performed to-date}
 
-    \subsection{Choice of Hardware}
-        In this project, there is a choice between using Microcontrollers or FPGAs.
+    \subsection{Hardware Choice}
+        In this project, there is a choice between Microcontrollers or FPGAs.
         To determine which is suitable, the capabilities of a device of each were tested using a 10MHz clock since this would allow bitrates of 10Mbps (bits are transferred on each rising edge).
 
         \subsubsection{MC}
@@ -162,7 +162,7 @@
             \autoref{fig:500kHz_MC} shows the microcontroller producing a square wave clock at 500kHz, suggesting a measurement equipment limitation.
             In \autoref{fig:42MHz_MC}, the microcontroller is producing a clock at its maximum frequency of 42MHz.~\cite{NUCLEO2014,STM2014}
             The signal is almost triangular, but still holds a fundamental frequency of 42MHz.
-            However, the
+            However, 
             \begin{math}
                 V_{pp}
             \end{math}
@@ -170,7 +170,7 @@
 
             The RT-ZPO3 oscilloscope probe being used has a -3dB bandwidth of 10MHz which explains the distortion in the 10MHz and 42MHz clocks.~\cite{R&S2019}
             The Fourier Series of a square wave, with its fundamental frequency, has higher frequencies that allow the wave to be square.~\cite{JASvoboda2013}
-            So in a 10MHz square wave, there are high frequencies which allow for the wave to be square.
+            So in a 10MHz square wave, there are higher frequencies which allow for the wave to be square.
             These frequencies are attenuated, giving the output in \autoref{fig:10MHz_MC}.
             The 10MHz frequency is within the bandwidth, so there's little attenuation in
             \begin{math}
@@ -210,22 +210,22 @@
 
         \subsubsection{Final Choice}
             Both hardware choices display similar results in testing with clock signals meaning they are both capable of being used to develop a BERT.\@
-            The FPGA has a higher maximum clock frequency (50MHz) over the microcontroller (42MHz) suggesting it can be pushed further to test higher bitrates.~\cite{NUCLEO2014,STM2014,Terasic2012}
+            The FPGA has a higher maximum clock frequency (50MHz) over the microcontroller (42MHz) suggesting it can be pushed further for higher bitrates.~\cite{NUCLEO2014,STM2014,Terasic2012}
 
             Microcontrollers are programmed at a higher level than FPGAs, meaning they are easier to work with.
             However, this provides minimal control over the lower level logic.
             FPGAs allow for a higher degree of control by working directly at the logic circuit level, but this makes them difficult to program.
 
             Microcontrollers have interfaces for transmitting data synchronised to a clock e.g. I2C, SPI.\@
-            But these peripherals have complex workings which may require more than one clock cycle per transferred bit.
-            The FPGA being used has an ADC but no other peripherals since it works directly at the logic circuit level.
-            Despite being difficult to program, logic circuits can be designed in a way that allows for one bit to be transferred per clock cycle.~\cite{STM2014,Terasic2012}
-            When working with registers, a low level of programming is required for direct control.
-            Microcontrollers tend to be cheaper than FPGAs, and low cost is one of the aims of this project.
-            However, compared to the price of BER equipment, this difference in price is small, meaning despite the choice of hardware, the costs will most likely be relatively low.~\cite{MJBasford2020,SChatterjee2023}
+            But these peripherals use processes which may require more than one clock cycle per transferred bit.
+            The FPGA being used has an ADC but no other peripherals since it works at the logic circuit level.
+            Despite being difficult to program, FPGAs can be programmed in a way that allows one bit to be transferred per clock cycle.~\cite{STM2014,Terasic2012}
+            For direct control registers' status, a low level of programming is required.
+            Microcontrollers are generally cheaper than FPGAs, and low cost is one of the aims of this project.
+            However, compared to the price of BER equipment, this difference in price is small, meaning despite the hardware choice, the costs will most likely be relatively low.~\cite{MJBasford2020,SChatterjee2023}
             
-            In this project, an LFSR would be required for PRBS generation, meaning direct control over logic is necessary.
-            The clock rates available are in the Megahertz range rather than Gigahertz, so it would be ideal use clock cycles efficiently.
+            In this project, an LFSR would generate the PRBS, meaning direct control over logic is necessary.
+            The clock rates available are in the Megahertz range rather than Gigahertz, so using clock cycles efficiently is necessary.
             Considering these factors, the FPGA has been chosen to develop the BERT.\@
     
     \subsection{PRBS generator}
@@ -235,14 +235,14 @@
         \begin{equation}
             x^7 + x^6 + 1
         \end{equation}
-        This polynomial isn't mathematical, it's a representation of the LFSR that would generate a PRBS-7.
+        This polynomial isn't mathematical, it's a representation of an LFSR that generates a PRBS-7.
         The values of the powers represent which bits are used for feedback.
         This polynomial says that the 7th and 6th bits of the register are inputs to an XOR gate where the output feeds into the Least Significant Bit of the LFSR.\@
-        The Most Significant Bit of the LFSR is transmitted to the communication channel on each clock cycle.~\cite{DRiccardi2011,MGeorge2007}
+        The Most Significant Bit of the LFSR is transmitted to the communication channel every clock cycle.~\cite{DRiccardi2011,MGeorge2007}
         This can be implemented using D-Type Flip-Flops in Quartus Prime.
         Typically, larger LFSRs would be used for PRBS generation to achieve a higher degree of randomness, as demonstrated in the Serial Communication BERT mentioned previously.~\cite{MJBasford2020}
-        \subsubsection{Push Button Clock}
 
+        \subsubsection{Push Button Clock}
             For testing purposes, the clock will be controlled by a push button on the DE0-Nano with the status of the LFSR on LEDs.
             Refer to \autoref{fig:FPGA_CLK_BTN} in the appendices for the logic circuit.
             The initial status of the LFSR is set to 7 ones. 
@@ -254,7 +254,6 @@
             This can be compared to the output of the PRBS generator viewed on an oscilloscope.
 
         \subsubsection{500kHz Clock}
-
             The 50MHz oscillator on the FPGA is initiated and connected to a Phase Locked Loop (PLL) to divide it by 100, producing a 500kHz clock.
             This clock controls the PRBS generator.
             Refer to \autoref{fig:FPGA_CLK_500k} in the appendices for the logic circuit.
@@ -281,7 +280,6 @@
             When comparing the output to the expected bit sequence, no mistakes are found and the sequence repeats every 127 bits as expected.
 
         \subsubsection{10MHz Clock}
-
             The 50MHz oscillator on the FPGA is initiated and connected to a PLL to divide it by 5, producing a 10MHz clock.
             This clock controls the PRBS generator.
             Refer to \autoref{fig:FPGA_CLK_10M} in the appendices for the logic circuit.
@@ -305,12 +303,11 @@
             \end{figure}
 
             In \autoref{fig:FPGA_PRBS_10M_1}, \autoref{fig:FPGA_PRBS_10M_2} and \autoref{fig:FPGA_PRBS_10M_3}, CH1 is the 10MHz clock and CH2 is the PRBS generator output.
-            At 10MHz, the probes distorts the square waveform due to high frequency components of the wave being attenuated.
+            At 10MHz, the probe distorts the square waveform due to high frequency components being attenuated.
             The probe used has a -3dB bandwidth of 10MHz.~\cite{R&S2019,JASvoboda2013}
             No mistakes are found when comparing the output to the expected bit sequence and the sequence repeats every 127 bits as expected.
 
         \subsubsection{20MHz Clock}
-
             The PLL to multiply the 50MHz oscillator by 2/5, producing a 20MHz clock.
             This clock controls the PRBS generator.
             Refer to \autoref{fig:FPGA_CLK_20M} in the appendices for the logic circuit.
@@ -328,7 +325,7 @@
             \end{figure}
 
             In \autoref{fig:FPGA_PRBS_20M_1} and \autoref{fig:FPGA_PRBS_20M_2}, CH1 is the 20MHz clock and CH2 is the PRBS generator output.
-            At 20MHz, the probe distorts the square wave due to high frequency components of the wave being attenuated.
+            At 20MHz, the probe distorts the square wave due to high frequency components being attenuated.
             This happens at a greater degree than at 10MHz.~\cite{JASvoboda2013}
             The bit sequence produced at 20MHz is the same as the expected bit sequence.
                         
@@ -338,7 +335,7 @@
         \includegraphics[width=1\textwidth]{img/Gantt_Chart.png}
         \caption{Original Gantt Chart}\label{fig:Gantt_Chart_1}
     \end{figure}
-    So far, the tasks have been completed on schedule with tasks like the risk assessment and hardware choice being completed quicker than expected. There was an overlap in time in hardware decision and PRBS development since generating a clock signal is a part of it. 
+    So far, the tasks have been completed on schedule with the risk assessment and hardware choice being completed quicker than expected. There was an overlap in time in hardware decision and PRBS development since generating a clock signal is a part of it. 
 
     \begin{figure}[H]
         \centering
