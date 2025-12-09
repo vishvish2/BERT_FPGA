@@ -77,7 +77,7 @@
     Low cost BERTs have been developed using such methods.~\cite{MJBasford2020, SChatterjee2023, NMarda2014}
     Examples of these are discussed below.
 
-    \subsection{Serial Communication BER Tester}
+    \subsection{Serial Communication BERT}
         An FPGA-based device was developed to test the BER of a serial communication channel.
         It uses a 31-bit LFSR to generate a PRBS which would have a length of \begin{math}
             2^{31} - 1
@@ -91,7 +91,7 @@
         By transmitting and receiving on the same FPGA, having to synchronise bitstreams wasn't an issue.
         However, this isn't good for simulating realistic transmission between two different devices.
     
-    \subsection{VLC BER Tester}
+    \subsection{VLC BERT}
         A PCB with logic circuits was designed to test a VLC channel, the same type of channel this project is meant for.
         In this case, the bit generator is a square wave rather than a PRBS.\@
         Effectively, it is a sequence of alternating ones and zeros.~\cite{SChatterjee2023}
@@ -102,8 +102,8 @@
         This system is significantly cheaper and less complex than FPGA equivalents.
         Unfortunately, bitstreams realistically won't be sequential ones and zeros, meaning the displayed BER may not necessarily reflect real world conditions for data transmission.~\cite{SChatterjee2023}
     
-    \subsection{Microcontroller-based BER}
-        An STM32 Microcontroller combined with a Complex Programmable Logic Device was used to make a BER tester.
+    \subsection{Microcontroller-based BERT}
+        An STM32 Microcontroller combined with a Complex Programmable Logic Device was used to make a BERT.\@
         A specific type of communication channel isn't specified.
         This system uses pseudorandom patterns to test a channel.~\cite{NMarda2014}
 
@@ -113,7 +113,7 @@
 
     \subsection{Summary}
         Overall, both FPGAs and Microcontrollers are valid options in building a BERT since they can both be programmed to transmit and receive a PRBS and compare bitstreams.
-        In order to best simulate realistic transmission, two separate devices for transmitting and receiving would be ideal.
+        To best simulate realistic transmission, separate devices for transmitting and receiving would be ideal.
         While this may increase cost, relative to the price of BER equipment, it shouldn't be significant.~\cite{MJBasford2020,SChatterjee2023}
         A PRBS generator will be used to generate a bitstream for calculating the BER.\@
         \autoref{fig:BERT_Block} gives an overview of the system.
@@ -128,8 +128,8 @@
 \section{Work Performed to-date}
 
     \subsection{Choice of Hardware}
-        In this project, there is choice between using Microcontrollers or FPGAs.
-        To determine which is suitable, the capabilities of a device of each were tested using a 10MHz clock. If a bitstream is synchronised to this clock, each bit would be transferred on the rising edge of the clock, hence a bitrate of 10Mbps.
+        In this project, there is a choice between using Microcontrollers or FPGAs.
+        To determine which is suitable, the capabilities of a device of each were tested using a 10MHz clock since this would allow a bitrate of 10Mbps (bits are transferred on each rising edge).
 
         \subsubsection{MC}
             The board being tested here is the NUCLEO-F401RE which has STM32F401RET6 Microcontroller using the Serial Peripheral Interface (SPI) communication protocol and programmed using STM32CUBEIDE.~\cite{NUCLEO2014,STM2014}
@@ -216,7 +216,7 @@
             However, this provides minimal control over the lower level logic.
             FPGAs allow for a higher degree of control by working directly at the logic circuit level, but this makes them difficult to program.
 
-            Microcontrollers have peripherals for transmitting data synchronised to a clock, including UART, ADCs and interfaces such as I2C and SPI.\@
+            Microcontrollers have interfaces for transmitting data synchronised to a clock such as I2C and SPI.\@
             But these peripherals have complex workings which may require more than one clock cycle per transferred bit.
             The FPGA being used has an ADC but no other peripherals since it works directly at the logic circuit level.
             Despite being difficult to program, logic circuits can be designed in a way that allows for one bit to be transferred per clock cycle.~\cite{STM2014,Terasic2012}
@@ -238,9 +238,9 @@
         This polynomial isn't mathematical, it's a representation of the LFSR that would generate a PRBS-7.
         The values of the powers represent which bits are used for feedback.
         This polynomial says that the 7th and 6th bits of the register are inputs to an XOR gate where the output feeds into the Least Significant Bit of the LFSR.\@
-        The Most Significant Bit of the LFSR is transmitted to the communication channel.~\cite{DRiccardi2011,MGeorge2007}
+        The Most Significant Bit of the LFSR is transmitted to the communication channel on each clock cycle.~\cite{DRiccardi2011,MGeorge2007}
         This can be implemented using D-Type Flip-Flops in Quartus Prime.
-        Typically, larger LFSRs would be used to generate a PRBS in order to achieve a higher degree of randomness, as demonstrated in the Serial Communication BER Tester mentioned previously.~\cite{MJBasford2020}
+        Typically, larger LFSRs would be used for PRBS generation to achieve a higher degree of randomness, as demonstrated in the Serial Communication BERT mentioned previously.~\cite{MJBasford2020}
         \subsubsection{Push Button Clock}
 
             For testing purposes, the clock will be controlled by a push button on the DE0-Nano with the status of the LFSR on LEDs.
