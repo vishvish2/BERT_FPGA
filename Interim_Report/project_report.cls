@@ -206,9 +206,9 @@
 \renewcommand{\headrulewidth}{0pt}
 \fancyfoot[LO,RE]{\sffamily\normalsize \@author } %\fontsize{7.9pt}{8.5pt}\selectfont
 \fancyfoot[RO]{\sffamily\normalsize%
-	 UCL EEE\hspace*{3pt}$\vert$\hspace*{3pt}3\textsuperscript{rd} year project final report\hspace*{3pt}$\vert$\hspace*{5pt}\thepage}
+	 UCL EEE\hspace*{3pt}$\vert$\hspace*{3pt}3\textsuperscript{rd} year project Interim Report\hspace*{3pt}$\vert$\hspace*{5pt}\thepage}
 \fancyfoot[LE]{\sffamily\normalsize%
-	 \thepage\hspace*{5pt}$\vert$\hspace*{3pt}UCL EEE\hspace*{3pt}$\vert$\hspace*{3pt}3\textsuperscript{rd} year project final report}
+	 \thepage\hspace*{5pt}$\vert$\hspace*{3pt}UCL EEE\hspace*{3pt}$\vert$\hspace*{3pt}3\textsuperscript{rd} year project Interim Report}
 \pagestyle{fancy}
 
 
