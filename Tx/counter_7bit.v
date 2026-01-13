@@ -15,8 +15,7 @@ always @(posedge CLOCK_5) begin
 	 if (reset) begin
 		  counter_out <= 7'd0;
         flag <= 1'b1;
-	 end
-    else if (counter_out == 7'd126) begin
+	 end else if (counter_out == 7'd126) begin
         counter_out <= 7'd0;
         flag <= 1'b1;
     end else begin
