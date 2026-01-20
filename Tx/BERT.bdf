@@ -723,67 +723,6 @@ on the Quartus Prime software download page.
 	)
 )
 (symbol
-	(rect 600 320 816 400)
-	(text "counter_7bit" (rect 5 0 64 11)(font "Arial" ))
-	(text "inst19" (rect 8 64 38 76)(font "Intel Clear" ))
-	(port
-		(pt 0 32)
-		(input)
-		(text "CLOCK_5" (rect 0 0 48 11)(font "Arial" ))
-		(text "CLOCK_5" (rect 21 27 69 38)(font "Arial" ))
-		(line (pt 0 32)(pt 16 32))
-	)
-	(port
-		(pt 0 48)
-		(input)
-		(text "reset" (rect 0 0 23 11)(font "Arial" ))
-		(text "reset" (rect 21 43 44 54)(font "Arial" ))
-		(line (pt 0 48)(pt 16 48))
-	)
-	(port
-		(pt 216 32)
-		(output)
-		(text "counter_out[6..0]" (rect 0 0 80 11)(font "Arial" ))
-		(text "counter_out[6..0]" (rect 128 27 208 38)(font "Arial" ))
-		(line (pt 216 32)(pt 200 32)(line_width 3))
-	)
-	(port
-		(pt 216 48)
-		(output)
-		(text "flag" (rect 0 0 17 11)(font "Arial" ))
-		(text "flag" (rect 181 43 198 54)(font "Arial" ))
-		(line (pt 216 48)(pt 200 48))
-	)
-	(drawing
-		(rectangle (rect 16 16 200 64))
-	)
-)
-(symbol
-	(rect 488 352 536 384)
-	(text "NOT" (rect 1 0 21 9)(font "Arial" (font_size 6)))
-	(text "inst20" (rect 3 21 33 33)(font "Intel Clear" ))
-	(port
-		(pt 0 16)
-		(input)
-		(text "IN" (rect 2 7 16 18)(font "Courier New" (bold))(invisible))
-		(text "IN" (rect 2 7 16 18)(font "Courier New" (bold))(invisible))
-		(line (pt 0 16)(pt 13 16))
-	)
-	(port
-		(pt 48 16)
-		(output)
-		(text "OUT" (rect 32 7 53 18)(font "Courier New" (bold))(invisible))
-		(text "OUT" (rect 32 7 53 18)(font "Courier New" (bold))(invisible))
-		(line (pt 39 16)(pt 48 16))
-	)
-	(drawing
-		(line (pt 13 25)(pt 13 7))
-		(line (pt 13 7)(pt 31 16))
-		(line (pt 13 25)(pt 31 16))
-		(circle (rect 31 12 39 20))
-	)
-)
-(symbol
 	(rect 752 -272 816 -160)
 	(text "AND6" (rect 1 0 28 9)(font "Arial" (font_size 6)))
 	(text "inst2" (rect 3 101 27 113)(font "Intel Clear" ))
@@ -1172,24 +1111,6 @@ on the Quartus Prime software download page.
 	(pt 576 160)
 )
 (connector
-	(pt 576 160)
-	(pt 576 240)
-)
-(connector
-	(pt 576 240)
-	(pt 576 352)
-)
-(connector
-	(text "counter[6..0]" (rect 826 336 888 348)(font "Intel Clear" ))
-	(pt 816 352)
-	(pt 880 352)
-	(bus)
-)
-(connector
-	(pt 576 352)
-	(pt 600 352)
-)
-(connector
 	(pt -128 -16)
 	(pt 88 -16)
 )
@@ -1200,14 +1121,6 @@ on the Quartus Prime software download page.
 (connector
 	(pt 88 -16)
 	(pt 88 32)
-)
-(connector
-	(pt -128 368)
-	(pt 488 368)
-)
-(connector
-	(pt 536 368)
-	(pt 600 368)
 )
 (connector
 	(pt -88 0)
@@ -1339,11 +1252,11 @@ on the Quartus Prime software download page.
 )
 (connector
 	(pt -128 -16)
-	(pt -128 368)
+	(pt -128 440)
 )
 (connector
-	(pt -128 368)
-	(pt -128 440)
+	(pt 576 160)
+	(pt 576 240)
 )
 (junction (pt 88 144))
 (junction (pt 176 144))
@@ -1379,4 +1292,3 @@ on the Quartus Prime software download page.
 (junction (pt 304 -48))
 (junction (pt 400 -32))
 (junction (pt 488 -16))
-(junction (pt -128 368))
