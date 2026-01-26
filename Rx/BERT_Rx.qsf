@@ -60,7 +60,6 @@ set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_location_assignment PIN_C6 -to PRBS_Rx_value
-set_location_assignment PIN_E1 -to PRESET
 set_location_assignment PIN_C3 -to CLK_IN
 set_location_assignment PIN_B4 -to PRBS_Tx_IN
 set_location_assignment PIN_B12 -to PRBS_Tx_OUT
@@ -71,4 +70,20 @@ set_global_assignment -name VERILOG_FILE set_once.v
 set_global_assignment -name SYSTEMVERILOG_FILE Latch_CA.sv
 set_location_assignment PIN_D8 -to PRESET_Tx
 set_global_assignment -name SYSTEMVERILOG_FILE mux_2_to_1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE counter.sv
+set_global_assignment -name SYSTEMVERILOG_FILE error_counter.sv
+set_global_assignment -name SYSTEMVERILOG_FILE reset_counter.sv
+set_global_assignment -name ENABLE_OCT_DONE OFF
+set_global_assignment -name ENABLE_CONFIGURATION_PINS OFF
+set_global_assignment -name ENABLE_BOOT_SEL_PIN OFF
+set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
+set_global_assignment -name CRC_ERROR_OPEN_DRAIN OFF
+set_global_assignment -name RESERVE_ALL_UNUSED_PINS_WEAK_PULLUP "AS INPUT TRI-STATED"
+set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -rise
+set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -fall
+set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -rise
+set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -fall
+set_location_assignment PIN_A12 -to NOT_PRBS
+set_global_assignment -name POWER_USE_INPUT_FILES OFF
+set_location_assignment PIN_T14 -to ERROR
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

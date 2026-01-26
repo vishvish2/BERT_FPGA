@@ -22,7 +22,7 @@ on the Quartus Prime software download page.
 (header "graphic" (version "1.4"))
 (pin
 	(input)
-	(rect -304 112 -136 128)
+	(rect -320 112 -152 128)
 	(text "INPUT" (rect 125 0 153 9)(font "Arial" (font_size 6)))
 	(text "CLK_IN" (rect 5 0 42 11)(font "Arial" ))
 	(pt 168 8)
@@ -35,11 +35,11 @@ on the Quartus Prime software download page.
 		(line (pt 109 12)(pt 113 8))
 	)
 	(text "VCC" (rect 128 7 148 16)(font "Arial" (font_size 6)))
-	(annotation_block (location)(rect -360 128 -304 144))
+	(annotation_block (location)(rect -376 128 -320 144))
 )
 (pin
 	(input)
-	(rect 144 -136 312 -120)
+	(rect 144 -176 312 -160)
 	(text "INPUT" (rect 125 0 153 9)(font "Arial" (font_size 6)))
 	(text "PRBS_Tx_IN" (rect 5 0 68 11)(font "Arial" ))
 	(pt 168 8)
@@ -52,11 +52,11 @@ on the Quartus Prime software download page.
 		(line (pt 109 12)(pt 113 8))
 	)
 	(text "VCC" (rect 128 7 148 16)(font "Arial" (font_size 6)))
-	(annotation_block (location)(rect 88 -120 144 -104))
+	(annotation_block (location)(rect 88 -160 144 -144))
 )
 (pin
 	(input)
-	(rect -304 168 -136 184)
+	(rect -320 168 -152 184)
 	(text "INPUT" (rect 125 0 153 9)(font "Arial" (font_size 6)))
 	(text "FLAG_IN" (rect 5 0 49 11)(font "Arial" ))
 	(pt 168 8)
@@ -69,13 +69,13 @@ on the Quartus Prime software download page.
 		(line (pt 109 12)(pt 113 8))
 	)
 	(text "VCC" (rect 128 7 148 16)(font "Arial" (font_size 6)))
-	(annotation_block (location)(rect -360 184 -304 200))
+	(annotation_block (location)(rect -376 184 -320 200))
 )
 (pin
 	(input)
-	(rect -320 -152 -152 -136)
+	(rect -320 -192 -152 -176)
 	(text "INPUT" (rect 125 0 153 9)(font "Arial" (font_size 6)))
-	(text "PRESET_Tx" (rect 5 0 66 11)(font "Arial" ))
+	(text "PRESET_Tx" (rect 5 0 65 11)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -86,11 +86,11 @@ on the Quartus Prime software download page.
 		(line (pt 109 12)(pt 113 8))
 	)
 	(text "VCC" (rect 128 7 148 16)(font "Arial" (font_size 6)))
-	(annotation_block (location)(rect -376 -136 -320 -120))
+	(annotation_block (location)(rect -376 -176 -320 -160))
 )
 (pin
 	(output)
-	(rect 744 216 920 232)
+	(rect 904 216 1080 232)
 	(text "OUTPUT" (rect 1 0 39 9)(font "Arial" (font_size 6)))
 	(text "PRBS_Rx_value" (rect 90 0 169 11)(font "Arial" ))
 	(pt 0 8)
@@ -103,11 +103,11 @@ on the Quartus Prime software download page.
 		(line (pt 82 8)(pt 78 12))
 		(line (pt 78 12)(pt 82 8))
 	)
-	(annotation_block (location)(rect 896 232 952 248))
+	(annotation_block (location)(rect 1056 232 1112 248))
 )
 (pin
 	(output)
-	(rect 424 -112 600 -96)
+	(rect 920 -136 1096 -120)
 	(text "OUTPUT" (rect 1 0 39 9)(font "Arial" (font_size 6)))
 	(text "PRBS_Tx_OUT" (rect 90 0 161 12)(font "Intel Clear" ))
 	(pt 0 8)
@@ -120,7 +120,7 @@ on the Quartus Prime software download page.
 		(line (pt 82 8)(pt 78 12))
 		(line (pt 78 12)(pt 82 8))
 	)
-	(annotation_block (location)(rect 600 -96 664 -80))
+	(annotation_block (location)(rect 1096 -120 1160 -104))
 )
 (pin
 	(output)
@@ -138,6 +138,22 @@ on the Quartus Prime software download page.
 		(line (pt 78 12)(pt 82 8))
 	)
 	(annotation_block (location)(rect 296 368 360 384))
+)
+(pin
+	(output)
+	(rect 976 24 1152 40)
+	(text "OUTPUT" (rect 1 0 39 9)(font "Arial" (font_size 6)))
+	(text "ERROR" (rect 90 0 128 11)(font "Arial" ))
+	(pt 0 8)
+	(drawing
+		(line (pt 0 8)(pt 52 8))
+		(line (pt 52 4)(pt 78 4))
+		(line (pt 52 12)(pt 78 12))
+		(line (pt 52 12)(pt 52 4))
+		(line (pt 78 4)(pt 82 8))
+		(line (pt 82 8)(pt 78 12))
+		(line (pt 78 12)(pt 82 8))
+	)
 )
 (symbol
 	(rect 8 264 40 280)
@@ -189,7 +205,7 @@ on the Quartus Prime software download page.
 	)
 )
 (symbol
-	(rect 360 -128 424 -48)
+	(rect 360 -168 424 -88)
 	(text "DFF" (rect 1 0 19 9)(font "Arial" (font_size 6)))
 	(text "inst11" (rect 3 68 33 80)(font "Intel Clear" ))
 	(port
@@ -855,6 +871,143 @@ on the Quartus Prime software download page.
 		(line (pt 8 8)(pt 24 8))
 	)
 )
+(symbol
+	(rect 504 -176 576 -64)
+	(text "mux_2_to_1" (rect 5 0 64 11)(font "Arial" ))
+	(text "inst43" (rect 8 80 38 92)(font "Intel Clear" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "a" (rect 0 0 5 11)(font "Arial" ))
+		(text "a" (rect 21 27 26 38)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "b" (rect 0 0 5 11)(font "Arial" ))
+		(text "b" (rect 21 43 26 54)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "s" (rect 0 0 5 11)(font "Arial" ))
+		(text "s" (rect 21 59 26 70)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64))
+	)
+	(port
+		(pt 72 48)
+		(output)
+		(text "out" (rect -48 0 -33 11)(font "Arial" ))
+		(text "out" (rect 40 40 55 51)(font "Arial" ))
+		(line (pt 72 48)(pt 56 48))
+	)
+	(drawing
+		(rectangle (rect 16 16 56 72))
+	)
+)
+(symbol
+	(rect 440 -136 488 -104)
+	(text "NOT" (rect 1 0 21 9)(font "Arial" (font_size 6)))
+	(text "inst1" (rect 3 21 27 33)(font "Intel Clear" ))
+	(port
+		(pt 0 16)
+		(input)
+		(text "IN" (rect 2 7 16 18)(font "Courier New" (bold))(invisible))
+		(text "IN" (rect 2 7 16 18)(font "Courier New" (bold))(invisible))
+		(line (pt 0 16)(pt 13 16))
+	)
+	(port
+		(pt 48 16)
+		(output)
+		(text "OUT" (rect 32 7 53 18)(font "Courier New" (bold))(invisible))
+		(text "OUT" (rect 32 7 53 18)(font "Courier New" (bold))(invisible))
+		(line (pt 39 16)(pt 48 16))
+	)
+	(drawing
+		(line (pt 13 25)(pt 13 7))
+		(line (pt 13 7)(pt 31 16))
+		(line (pt 13 25)(pt 31 16))
+		(circle (rect 31 12 39 20))
+	)
+)
+(symbol
+	(rect 912 8 976 56)
+	(text "XOR" (rect 1 0 22 9)(font "Arial" (font_size 6)))
+	(text "inst4" (rect 3 37 27 49)(font "Intel Clear" ))
+	(port
+		(pt 0 16)
+		(input)
+		(text "IN1" (rect 2 7 22 18)(font "Courier New" (bold))(invisible))
+		(text "IN1" (rect 2 7 22 18)(font "Courier New" (bold))(invisible))
+		(line (pt 0 16)(pt 11 16))
+	)
+	(port
+		(pt 0 32)
+		(input)
+		(text "IN2" (rect 2 23 22 34)(font "Courier New" (bold))(invisible))
+		(text "IN2" (rect 2 23 22 34)(font "Courier New" (bold))(invisible))
+		(line (pt 0 32)(pt 11 32))
+	)
+	(port
+		(pt 64 24)
+		(output)
+		(text "OUT" (rect 48 15 69 26)(font "Courier New" (bold))(invisible))
+		(text "OUT" (rect 48 15 69 26)(font "Courier New" (bold))(invisible))
+		(line (pt 49 24)(pt 64 24))
+	)
+	(drawing
+		(line (pt 14 13)(pt 25 13))
+		(line (pt 14 36)(pt 25 36))
+		(arc (pt 7 29)(pt 7 19)(rect -14 8 19 41))
+		(arc (pt 49 24)(pt 25 13)(rect -6 13 57 76))
+		(arc (pt 25 35)(pt 49 24)(rect -6 -27 57 36))
+		(arc (pt 8 36)(pt 8 12)(rect -21 7 14 42))
+	)
+)
+(symbol
+	(rect 80 -280 232 -200)
+	(text "counter" (rect 5 0 41 11)(font "Arial" ))
+	(text "inst5" (rect 8 64 32 76)(font "Intel Clear" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "clk" (rect 0 0 12 11)(font "Arial" ))
+		(text "clk" (rect 21 27 33 38)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "rstn" (rect 0 0 17 11)(font "Arial" ))
+		(text "rstn" (rect 21 43 38 54)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48))
+	)
+	(port
+		(pt 152 32)
+		(output)
+		(text "out[6..0]" (rect 0 0 38 11)(font "Arial" ))
+		(text "out[6..0]" (rect 99 27 137 38)(font "Arial" ))
+		(line (pt 152 32)(pt 136 32)(line_width 3))
+	)
+	(port
+		(pt 152 48)
+		(output)
+		(text "error" (rect 0 0 23 11)(font "Arial" ))
+		(text "error" (rect 112 43 135 54)(font "Arial" ))
+		(line (pt 152 48)(pt 136 48))
+	)
+	(parameter
+		"MAX_COUNT"
+		"100"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(drawing
+		(rectangle (rect 16 16 136 64))
+	)
+	(annotation_block (parameter)(rect 232 -312 424 -280))
+)
 (connector
 	(pt 136 280)
 	(pt 136 296)
@@ -980,24 +1133,12 @@ on the Quartus Prime software download page.
 	(pt 664 184)
 )
 (connector
-	(pt 696 224)
-	(pt 712 224)
-)
-(connector
-	(pt 712 224)
-	(pt 744 224)
-)
-(connector
 	(pt -24 168)
 	(pt 712 168)
 )
 (connector
 	(pt 528 240)
 	(pt 528 312)
-)
-(connector
-	(pt -56 312)
-	(pt 88 312)
 )
 (connector
 	(pt 88 240)
@@ -1036,20 +1177,20 @@ on the Quartus Prime software download page.
 	(pt 632 240)
 )
 (connector
-	(pt 392 -144)
-	(pt 392 -128)
+	(pt 392 -184)
+	(pt 392 -168)
 )
 (connector
-	(pt 344 -104)
-	(pt 360 -104)
+	(pt 344 -144)
+	(pt 360 -144)
 )
 (connector
-	(pt 312 -128)
-	(pt 344 -128)
+	(pt 312 -168)
+	(pt 344 -168)
 )
 (connector
-	(pt 344 -128)
-	(pt 344 -104)
+	(pt 344 -168)
+	(pt 344 -144)
 )
 (connector
 	(pt -120 360)
@@ -1058,10 +1199,6 @@ on the Quartus Prime software download page.
 (connector
 	(pt -120 360)
 	(pt -120 176)
-)
-(connector
-	(pt -136 120)
-	(pt -56 120)
 )
 (connector
 	(pt 24 296)
@@ -1092,10 +1229,6 @@ on the Quartus Prime software download page.
 	(pt 664 296)
 )
 (connector
-	(pt 88 312)
-	(pt 176 312)
-)
-(connector
 	(pt 264 312)
 	(pt 352 312)
 )
@@ -1106,22 +1239,6 @@ on the Quartus Prime software download page.
 (connector
 	(pt 528 240)
 	(pt 544 240)
-)
-(connector
-	(pt -56 -88)
-	(pt 360 -88)
-)
-(connector
-	(pt -56 -88)
-	(pt -56 120)
-)
-(connector
-	(pt -152 -144)
-	(pt -104 -144)
-)
-(connector
-	(pt -104 -144)
-	(pt 392 -144)
 )
 (connector
 	(pt 56 224)
@@ -1254,18 +1371,6 @@ on the Quartus Prime software download page.
 (connector
 	(pt 184 32)
 	(pt 192 32)
-)
-(connector
-	(pt 192 32)
-	(pt 192 136)
-)
-(connector
-	(pt 192 136)
-	(pt 184 136)
-)
-(connector
-	(pt 184 136)
-	(pt 184 224)
 )
 (connector
 	(pt 184 224)
@@ -1406,14 +1511,6 @@ on the Quartus Prime software download page.
 (connector
 	(pt 624 224)
 	(pt 632 224)
-)
-(connector
-	(pt -136 176)
-	(pt -120 176)
-)
-(connector
-	(pt -120 176)
-	(pt -48 176)
 )
 (connector
 	(pt 0 48)
@@ -1584,10 +1681,6 @@ on the Quartus Prime software download page.
 	(pt 656 -32)
 )
 (connector
-	(pt -104 -144)
-	(pt -104 184)
-)
-(connector
 	(pt -104 184)
 	(pt 136 184)
 )
@@ -1596,12 +1689,16 @@ on the Quartus Prime software download page.
 	(pt 224 184)
 )
 (connector
-	(pt -56 120)
-	(pt -56 312)
+	(pt -152 -184)
+	(pt -104 -184)
 )
 (connector
+	(pt -104 -184)
+	(pt 392 -184)
+)
+(connector
+	(pt 392 -88)
 	(pt 392 -32)
-	(pt 392 -48)
 )
 (connector
 	(pt 320 -32)
@@ -1610,6 +1707,154 @@ on the Quartus Prime software download page.
 (connector
 	(pt 392 -32)
 	(pt 432 -32)
+)
+(connector
+	(pt 488 -120)
+	(pt 496 -120)
+)
+(connector
+	(pt 496 -120)
+	(pt 496 -128)
+)
+(connector
+	(pt 496 -128)
+	(pt 504 -128)
+)
+(connector
+	(pt 440 -120)
+	(pt 432 -120)
+)
+(connector
+	(pt 432 -144)
+	(pt 432 -120)
+)
+(connector
+	(pt 424 -144)
+	(pt 432 -144)
+)
+(connector
+	(pt 504 -112)
+	(pt 496 -112)
+)
+(connector
+	(pt -64 312)
+	(pt 88 312)
+)
+(connector
+	(pt 88 312)
+	(pt 176 312)
+)
+(connector
+	(pt 696 224)
+	(pt 712 224)
+)
+(connector
+	(pt 912 24)
+	(pt 832 24)
+)
+(connector
+	(pt 912 40)
+	(pt 832 40)
+)
+(connector
+	(pt 712 224)
+	(pt 832 224)
+)
+(connector
+	(pt 832 224)
+	(pt 904 224)
+)
+(connector
+	(pt 832 40)
+	(pt 832 224)
+)
+(connector
+	(pt -152 120)
+	(pt -64 120)
+)
+(connector
+	(pt -152 176)
+	(pt -120 176)
+)
+(connector
+	(pt -120 176)
+	(pt -48 176)
+)
+(connector
+	(pt 184 144)
+	(pt 184 224)
+)
+(connector
+	(pt 192 144)
+	(pt 192 32)
+)
+(connector
+	(pt 192 144)
+	(pt 184 144)
+)
+(connector
+	(pt -64 120)
+	(pt -64 312)
+)
+(connector
+	(pt 832 -128)
+	(pt 832 24)
+)
+(connector
+	(pt 432 -144)
+	(pt 504 -144)
+)
+(connector
+	(pt 576 -128)
+	(pt 832 -128)
+)
+(connector
+	(pt 832 -128)
+	(pt 920 -128)
+)
+(connector
+	(pt -64 -128)
+	(pt 360 -128)
+)
+(connector
+	(pt -104 -232)
+	(pt 80 -232)
+)
+(connector
+	(pt -104 -232)
+	(pt -104 -184)
+)
+(connector
+	(pt -104 -184)
+	(pt -104 184)
+)
+(connector
+	(pt 80 -248)
+	(pt -64 -248)
+)
+(connector
+	(pt -64 -248)
+	(pt -64 -128)
+)
+(connector
+	(pt -64 -128)
+	(pt -64 120)
+)
+(connector
+	(pt 232 -232)
+	(pt 592 -232)
+)
+(connector
+	(pt 592 -232)
+	(pt 592 -56)
+)
+(connector
+	(pt 592 -56)
+	(pt 496 -56)
+)
+(connector
+	(pt 496 -112)
+	(pt 496 -56)
 )
 (junction (pt 312 296))
 (junction (pt 400 296))
@@ -1630,8 +1875,6 @@ on the Quartus Prime software download page.
 (junction (pt 352 312))
 (junction (pt 440 312))
 (junction (pt 528 312))
-(junction (pt -56 120))
-(junction (pt -104 -144))
 (junction (pt 616 152))
 (junction (pt -120 176))
 (junction (pt -48 128))
@@ -1647,3 +1890,9 @@ on the Quartus Prime software download page.
 (junction (pt 432 -32))
 (junction (pt 544 -32))
 (junction (pt 392 -32))
+(junction (pt -104 -184))
+(junction (pt 432 -144))
+(junction (pt -64 120))
+(junction (pt 832 224))
+(junction (pt 832 -128))
+(junction (pt -64 -128))
