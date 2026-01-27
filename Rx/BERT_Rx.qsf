@@ -94,4 +94,7 @@ set_location_assignment PIN_P14 -to pin_name4
 set_location_assignment PIN_N16 -to pin_name3
 set_location_assignment PIN_P16 -to pin_name2
 set_location_assignment PIN_L15 -to pin_name1
+set_location_assignment PIN_K16 -to pin_name9
+set_location_assignment PIN_N11 -to pin_name10
+set_global_assignment -name SYSTEMVERILOG_FILE mux_10_bit.sv
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
