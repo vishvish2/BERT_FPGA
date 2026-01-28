@@ -1,11 +1,17 @@
-module error_counter (  input clk,               // Declare input port for clock to allow counter to count up
-                  input rstn,              // Declare input port for reset to allow the counter to be reset to 0 when required
-                  output reg[9:0] out);    // Declare 4-bit output port to get the counter values
+module error_counter (input clk,
+                  input error,  
+						input rstn,
+                  output reg[9:0] count,
+						output reg[9:0] out);  
 
-  always @ (posedge clk) begin
-    if (! rstn)
-      out <= 0;
-    else
-      out <= out + 1;
+						
+  always @ (posedge clk or negedge rstn) begin
+    if (! rstn) begin
+		out <= count;
+      count <= 10'd0;
+    end else if (error)
+      count <= count + 10'd1;
+	 else
+	   count <= count;
   end
 endmodule
