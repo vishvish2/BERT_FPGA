@@ -1,19 +1,21 @@
-module reset_counter (
+module reset_counter #(
+    parameter int MAX_COUNT = 20000000
+) (
     input  clk,               // Clock
     input  rstn,              // Active-low synchronous reset
-    output reg [23:0] out,      // 7-bit counter output
+    output reg [47:0] out,      // 7-bit counter output
 	 output reset
 );
 
   always @(posedge clk) begin
     if (!rstn) begin
-      out <= 24'd0;
+      out <= 48'd0;
 		reset <= 0;
-    end else if (out == 24'd9999999) begin
-      out <= 24'd0;
+    end else if (out == MAX_COUNT-1) begin
+      out <= 48'd0;
 		reset <= 0;
     end else begin
-      out <= out + 24'd1;
+      out <= out + 48'd1;
 		reset <= 1;
 	 end
   end

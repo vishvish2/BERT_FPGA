@@ -41,8 +41,8 @@ on the Quartus Prime software download page.
 	(port
 		(pt 152 32)
 		(output)
-		(text "out[23..0]" (rect 0 0 36 12)(font "Arial" ))
-		(text "out[23..0]" (rect 95 27 131 39)(font "Arial" ))
+		(text "out[47..0]" (rect 0 0 37 12)(font "Arial" ))
+		(text "out[47..0]" (rect 94 27 131 39)(font "Arial" ))
 		(line (pt 152 32)(pt 136 32)(line_width 3))
 	)
 	(port
@@ -52,7 +52,13 @@ on the Quartus Prime software download page.
 		(text "reset" (rect 111 43 131 55)(font "Arial" ))
 		(line (pt 152 48)(pt 136 48)(line_width 1))
 	)
+	(parameter
+		"MAX_COUNT"
+		"20000000"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
 	(drawing
 		(rectangle (rect 16 16 136 64)(line_width 1))
 	)
+	(annotation_block (parameter)(rect 168 -64 268 16))
 )
