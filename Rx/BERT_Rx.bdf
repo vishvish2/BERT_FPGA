@@ -1899,13 +1899,13 @@ on the Quartus Prime software download page.
 	)
 	(parameter
 		"MAX_COUNT"
-		"10000"
+		"100000"
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
 	(drawing
 		(rectangle (rect 16 16 136 64))
 	)
-	(annotation_block (parameter)(rect 232 -312 422 -282))
+	(annotation_block (parameter)(rect 232 -312 429 -282))
 )
 (connector
 	(pt 136 280)
@@ -3336,20 +3336,12 @@ on the Quartus Prime software download page.
 	(pt 520 -112)
 )
 (connector
-	(pt 520 -48)
-	(pt 520 -112)
-)
-(connector
-	(pt 520 -48)
-	(pt 632 -48)
-)
-(connector
-	(pt 632 -232)
+	(pt 520 -232)
 	(pt 496 -232)
 )
 (connector
-	(pt 632 -232)
-	(pt 632 -48)
+	(pt 520 -232)
+	(pt 520 -112)
 )
 (junction (pt 312 296))
 (junction (pt 400 296))
