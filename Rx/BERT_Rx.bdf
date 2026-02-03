@@ -1824,48 +1824,6 @@ on the Quartus Prime software download page.
 	)
 )
 (symbol
-	(rect 80 -280 232 -200)
-	(text "counter" (rect 5 0 41 11)(font "Arial" ))
-	(text "inst13" (rect 8 64 36 75)(font "Arial" ))
-	(port
-		(pt 0 32)
-		(input)
-		(text "clk" (rect 0 0 12 11)(font "Arial" ))
-		(text "clk" (rect 21 27 33 38)(font "Arial" ))
-		(line (pt 0 32)(pt 16 32))
-	)
-	(port
-		(pt 0 48)
-		(input)
-		(text "rstn" (rect 0 0 17 11)(font "Arial" ))
-		(text "rstn" (rect 21 43 38 54)(font "Arial" ))
-		(line (pt 0 48)(pt 16 48))
-	)
-	(port
-		(pt 152 32)
-		(output)
-		(text "out[23..0]" (rect 0 0 44 11)(font "Arial" ))
-		(text "out[23..0]" (rect 94 27 131 38)(font "Arial" ))
-		(line (pt 152 32)(pt 136 32)(line_width 3))
-	)
-	(port
-		(pt 152 48)
-		(output)
-		(text "error" (rect 0 0 23 11)(font "Arial" ))
-		(text "error" (rect 112 43 131 54)(font "Arial" ))
-		(line (pt 152 48)(pt 136 48))
-	)
-	(parameter
-		"MAX_COUNT"
-		"500000"
-		""
-		(type "PARAMETER_SIGNED_DEC")	)
-	(drawing
-		(rectangle (rect 16 16 136 64))
-	)
-	(annotation_block (parameter)(rect 232 -312 429 -282))
-)
-(symbol
 	(rect 872 104 1024 184)
 	(text "reset_counter" (rect 5 0 71 11)(font "Arial" ))
 	(text "inst14" (rect 8 64 36 75)(font "Arial" ))
@@ -1899,13 +1857,55 @@ on the Quartus Prime software download page.
 	)
 	(parameter
 		"MAX_COUNT"
-		"20000000"
+		"10000000"
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
 	(drawing
 		(rectangle (rect 16 16 136 64))
 	)
 	(annotation_block (parameter)(rect 1032 168 1242 198))
+)
+(symbol
+	(rect 80 -280 232 -200)
+	(text "counter" (rect 5 0 41 11)(font "Arial" ))
+	(text "inst13" (rect 8 64 36 75)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "clk" (rect 0 0 12 11)(font "Arial" ))
+		(text "clk" (rect 21 27 33 38)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "rstn" (rect 0 0 17 11)(font "Arial" ))
+		(text "rstn" (rect 21 43 38 54)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48))
+	)
+	(port
+		(pt 152 32)
+		(output)
+		(text "out[23..0]" (rect 0 0 44 11)(font "Arial" ))
+		(text "out[23..0]" (rect 94 27 131 38)(font "Arial" ))
+		(line (pt 152 32)(pt 136 32)(line_width 3))
+	)
+	(port
+		(pt 152 48)
+		(output)
+		(text "error" (rect 0 0 23 11)(font "Arial" ))
+		(text "error" (rect 112 43 131 54)(font "Arial" ))
+		(line (pt 152 48)(pt 136 48))
+	)
+	(parameter
+		"MAX_COUNT"
+		"200000"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(drawing
+		(rectangle (rect 16 16 136 64))
+	)
+	(annotation_block (parameter)(rect 232 -312 429 -282))
 )
 (connector
 	(pt 136 280)

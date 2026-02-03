@@ -54,7 +54,7 @@ on the Quartus Prime software download page.
 	)
 	(parameter
 		"MAX_COUNT"
-		"500000"
+		"200000"
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
 	(drawing

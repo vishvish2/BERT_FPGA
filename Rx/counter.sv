@@ -1,5 +1,5 @@
 module counter #(
-    parameter int MAX_COUNT = 500000
+    parameter int MAX_COUNT = 200000
 ) (
     input  logic        clk,
     input  logic        rstn,   // Active-low synchronous reset

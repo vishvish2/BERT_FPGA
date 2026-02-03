@@ -21,6 +21,12 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <stdio.h>
+#include <string.h>
+#include <time.h>
+#include "stm32f4xx_hal.h"
+#include <stdbool.h>
+#include <stdlib.h>
 
 /* USER CODE END Includes */
 
@@ -43,6 +49,19 @@
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
+uint16_t value = 0;
+
+GPIO_TypeDef* ports[10] = {
+    GPIOA, GPIOA, GPIOA, GPIOB, GPIOC,
+    GPIOA, GPIOA, GPIOB, GPIOB, GPIOB
+};
+
+uint16_t pins[10] = {
+    GPIO_PIN_5, GPIO_PIN_6, GPIO_PIN_7, GPIO_PIN_6, GPIO_PIN_7,
+    GPIO_PIN_9, GPIO_PIN_8, GPIO_PIN_10, GPIO_PIN_4, GPIO_PIN_5
+};
+
+char msg[20];
 
 /* USER CODE END PV */
 
@@ -100,7 +119,14 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	  for (int i = 0; i < 10; i++) {
+	      value |= (HAL_GPIO_ReadPin(ports[i], pins[i]) << i);
+	  }
+
+	  sprintf(msg, "Value: %hu \r\n", value);
+	  HAL_UART_Transmit(&huart2, (uint8_t *) msg, strlen(msg), HAL_MAX_DELAY);
   }
+  HAL_Delay(500);
   /* USER CODE END 3 */
 }
 
@@ -201,21 +227,37 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
-
   /*Configure GPIO pin : B1_Pin */
   GPIO_InitStruct.Pin = B1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : LD2_Pin */
-  GPIO_InitStruct.Pin = LD2_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  /*Configure GPIO pins : PA5 PA6 PA7 PA8
+                           PA9 */
+  GPIO_InitStruct.Pin = GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8
+                          |GPIO_PIN_9;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PB10 */
+  GPIO_InitStruct.Pin = GPIO_PIN_10;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(LD2_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PC7 */
+  GPIO_InitStruct.Pin = GPIO_PIN_7;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PB4 PB5 PB6 */
+  GPIO_InitStruct.Pin = GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /* USER CODE BEGIN MX_GPIO_Init_2 */
 
