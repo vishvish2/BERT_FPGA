@@ -123,10 +123,14 @@ int main(void)
 	      value |= (HAL_GPIO_ReadPin(ports[i], pins[i]) << i);
 	  }
 
-	  sprintf(msg, "Value: %hu \r\n", value);
+	  sprintf(msg, "Errors: %hu \r\n", value);
 	  HAL_UART_Transmit(&huart2, (uint8_t *) msg, strlen(msg), HAL_MAX_DELAY);
+
+	  HAL_Delay(1000);
+	  NVIC_SystemReset();
+
   }
-  HAL_Delay(500);
+
   /* USER CODE END 3 */
 }
 
