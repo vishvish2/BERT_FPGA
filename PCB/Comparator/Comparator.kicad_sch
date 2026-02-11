@@ -1359,7 +1359,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "Package_SO:MSOP-8_3x3mm_P0.65mm"
+		(property "Footprint" "Comparator:MAX_997_MSOP-8_3x3mm_P0.65mm"
 			(at 146.05 92.71 0)
 			(effects
 				(font
