@@ -1,4 +1,4 @@
-The repository can be cloned to any local folder as normal using `git clone`.
+The repository can be forked and cloned to any local folder using `git clone`.
 
 ## Folders
 The folder `Tx` contains the Quartus Prime files for the FPGA used as a transmitter
