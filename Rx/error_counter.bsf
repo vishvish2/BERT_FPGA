@@ -52,13 +52,6 @@ on the Quartus Prime software download page.
 		(text "count[9..0]" (rect 98 27 139 39)(font "Arial" ))
 		(line (pt 160 32)(pt 144 32)(line_width 3))
 	)
-	(port
-		(pt 160 48)
-		(output)
-		(text "out[9..0]" (rect 0 0 31 12)(font "Arial" ))
-		(text "out[9..0]" (rect 108 43 139 55)(font "Arial" ))
-		(line (pt 160 48)(pt 144 48)(line_width 3))
-	)
 	(drawing
 		(rectangle (rect 16 16 144 96)(line_width 1))
 	)

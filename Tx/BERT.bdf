@@ -39,7 +39,7 @@ on the Quartus Prime software download page.
 )
 (pin
 	(input)
-	(rect 648 168 816 184)
+	(rect -88 624 80 640)
 	(text "INPUT" (rect 125 0 153 9)(font "Arial" (font_size 6)))
 	(text "KEY[0]" (rect 5 0 38 11)(font "Arial" ))
 	(pt 168 8)
@@ -52,7 +52,7 @@ on the Quartus Prime software download page.
 		(line (pt 109 12)(pt 113 8))
 	)
 	(text "VCC" (rect 128 7 148 16)(font "Arial" (font_size 6)))
-	(annotation_block (location)(rect 592 184 648 200))
+	(annotation_block (location)(rect -144 640 -88 656))
 )
 (pin
 	(input)
@@ -90,109 +90,7 @@ on the Quartus Prime software download page.
 )
 (pin
 	(output)
-	(rect 696 8 872 24)
-	(text "OUTPUT" (rect 1 0 39 9)(font "Arial" (font_size 6)))
-	(text "LED[6]" (rect 90 0 123 11)(font "Arial" ))
-	(pt 0 8)
-	(drawing
-		(line (pt 0 8)(pt 52 8))
-		(line (pt 52 4)(pt 78 4))
-		(line (pt 52 12)(pt 78 12))
-		(line (pt 52 12)(pt 52 4))
-		(line (pt 78 4)(pt 82 8))
-		(line (pt 82 8)(pt 78 12))
-		(line (pt 78 12)(pt 82 8))
-	)
-	(annotation_block (location)(rect 872 24 928 40))
-)
-(pin
-	(output)
-	(rect 696 -8 872 8)
-	(text "OUTPUT" (rect 1 0 39 9)(font "Arial" (font_size 6)))
-	(text "LED[5]" (rect 90 0 123 12)(font "Intel Clear" ))
-	(pt 0 8)
-	(drawing
-		(line (pt 0 8)(pt 52 8))
-		(line (pt 52 4)(pt 78 4))
-		(line (pt 52 12)(pt 78 12))
-		(line (pt 52 12)(pt 52 4))
-		(line (pt 78 4)(pt 82 8))
-		(line (pt 82 8)(pt 78 12))
-		(line (pt 78 12)(pt 82 8))
-	)
-	(annotation_block (location)(rect 872 8 928 24))
-)
-(pin
-	(output)
-	(rect 696 -24 872 -8)
-	(text "OUTPUT" (rect 1 0 39 9)(font "Arial" (font_size 6)))
-	(text "LED[4]" (rect 90 0 123 12)(font "Intel Clear" ))
-	(pt 0 8)
-	(drawing
-		(line (pt 0 8)(pt 52 8))
-		(line (pt 52 4)(pt 78 4))
-		(line (pt 52 12)(pt 78 12))
-		(line (pt 52 12)(pt 52 4))
-		(line (pt 78 4)(pt 82 8))
-		(line (pt 82 8)(pt 78 12))
-		(line (pt 78 12)(pt 82 8))
-	)
-	(annotation_block (location)(rect 872 -8 928 8))
-)
-(pin
-	(output)
-	(rect 696 -40 872 -24)
-	(text "OUTPUT" (rect 1 0 39 9)(font "Arial" (font_size 6)))
-	(text "LED[3]" (rect 90 0 123 12)(font "Intel Clear" ))
-	(pt 0 8)
-	(drawing
-		(line (pt 0 8)(pt 52 8))
-		(line (pt 52 4)(pt 78 4))
-		(line (pt 52 12)(pt 78 12))
-		(line (pt 52 12)(pt 52 4))
-		(line (pt 78 4)(pt 82 8))
-		(line (pt 82 8)(pt 78 12))
-		(line (pt 78 12)(pt 82 8))
-	)
-	(annotation_block (location)(rect 872 -24 936 -8))
-)
-(pin
-	(output)
-	(rect 696 -56 872 -40)
-	(text "OUTPUT" (rect 1 0 39 9)(font "Arial" (font_size 6)))
-	(text "LED[2]" (rect 90 0 123 12)(font "Intel Clear" ))
-	(pt 0 8)
-	(drawing
-		(line (pt 0 8)(pt 52 8))
-		(line (pt 52 4)(pt 78 4))
-		(line (pt 52 12)(pt 78 12))
-		(line (pt 52 12)(pt 52 4))
-		(line (pt 78 4)(pt 82 8))
-		(line (pt 82 8)(pt 78 12))
-		(line (pt 78 12)(pt 82 8))
-	)
-	(annotation_block (location)(rect 872 -40 936 -24))
-)
-(pin
-	(output)
-	(rect 696 -72 872 -56)
-	(text "OUTPUT" (rect 1 0 39 9)(font "Arial" (font_size 6)))
-	(text "LED[1]" (rect 90 0 123 12)(font "Intel Clear" ))
-	(pt 0 8)
-	(drawing
-		(line (pt 0 8)(pt 52 8))
-		(line (pt 52 4)(pt 78 4))
-		(line (pt 52 12)(pt 78 12))
-		(line (pt 52 12)(pt 52 4))
-		(line (pt 78 4)(pt 82 8))
-		(line (pt 82 8)(pt 78 12))
-		(line (pt 78 12)(pt 82 8))
-	)
-	(annotation_block (location)(rect 872 -56 936 -40))
-)
-(pin
-	(output)
-	(rect 848 168 1024 184)
+	(rect 112 624 288 640)
 	(text "OUTPUT" (rect 1 0 39 9)(font "Arial" (font_size 6)))
 	(text "LED_CLK" (rect 90 0 137 11)(font "Arial" ))
 	(pt 0 8)
@@ -205,7 +103,7 @@ on the Quartus Prime software download page.
 		(line (pt 82 8)(pt 78 12))
 		(line (pt 78 12)(pt 82 8))
 	)
-	(annotation_block (location)(rect 1024 184 1080 200))
+	(annotation_block (location)(rect 288 640 344 656))
 )
 (pin
 	(output)
@@ -226,24 +124,7 @@ on the Quartus Prime software download page.
 )
 (pin
 	(output)
-	(rect 696 -88 872 -72)
-	(text "OUTPUT" (rect 1 0 39 9)(font "Arial" (font_size 6)))
-	(text "LED[0]" (rect 90 0 123 11)(font "Arial" ))
-	(pt 0 8)
-	(drawing
-		(line (pt 0 8)(pt 52 8))
-		(line (pt 52 4)(pt 78 4))
-		(line (pt 52 12)(pt 78 12))
-		(line (pt 52 12)(pt 52 4))
-		(line (pt 78 4)(pt 82 8))
-		(line (pt 82 8)(pt 78 12))
-		(line (pt 78 12)(pt 82 8))
-	)
-	(annotation_block (location)(rect 872 -72 936 -56))
-)
-(pin
-	(output)
-	(rect 816 -224 992 -208)
+	(rect 816 -104 992 -88)
 	(text "OUTPUT" (rect 1 0 39 9)(font "Arial" (font_size 6)))
 	(text "FLAG" (rect 90 0 118 11)(font "Arial" ))
 	(pt 0 8)
@@ -256,7 +137,7 @@ on the Quartus Prime software download page.
 		(line (pt 82 8)(pt 78 12))
 		(line (pt 78 12)(pt 82 8))
 	)
-	(annotation_block (location)(rect 992 -208 1048 -192))
+	(annotation_block (location)(rect 992 -88 1048 -72))
 )
 (pin
 	(output)
@@ -723,7 +604,7 @@ on the Quartus Prime software download page.
 	)
 )
 (symbol
-	(rect 752 -272 816 -160)
+	(rect 752 -152 816 -40)
 	(text "AND6" (rect 1 0 28 9)(font "Arial" (font_size 6)))
 	(text "inst2" (rect 3 101 27 113)(font "Intel Clear" ))
 	(port
@@ -783,7 +664,7 @@ on the Quartus Prime software download page.
 	)
 )
 (symbol
-	(rect 672 -184 736 -136)
+	(rect 672 -64 736 -16)
 	(text "AND2" (rect 1 0 28 9)(font "Arial" (font_size 6)))
 	(text "inst11" (rect 3 37 33 49)(font "Intel Clear" ))
 	(port
@@ -1087,16 +968,12 @@ on the Quartus Prime software download page.
 	(pt 656 16)
 )
 (connector
-	(pt 656 16)
-	(pt 696 16)
-)
-(connector
 	(pt 488 160)
 	(pt 576 160)
 )
 (connector
-	(pt 816 176)
-	(pt 848 176)
+	(pt 80 632)
+	(pt 112 632)
 )
 (connector
 	(pt 456 240)
@@ -1127,124 +1004,52 @@ on the Quartus Prime software download page.
 	(pt 576 0)
 )
 (connector
-	(pt 304 -48)
-	(pt 696 -48)
+	(pt 752 -56)
+	(pt 744 -56)
 )
 (connector
-	(pt 136 -80)
-	(pt 696 -80)
+	(pt 744 -40)
+	(pt 736 -40)
 )
 (connector
-	(pt 224 -64)
-	(pt 696 -64)
-)
-(connector
-	(pt 400 -32)
-	(pt 696 -32)
-)
-(connector
-	(pt 488 -16)
-	(pt 696 -16)
-)
-(connector
-	(pt 576 0)
-	(pt 696 0)
-)
-(connector
-	(pt 136 -80)
-	(pt 136 72)
-)
-(connector
-	(pt 136 -256)
-	(pt 136 -80)
-)
-(connector
-	(pt 224 -240)
-	(pt 224 -64)
-)
-(connector
-	(pt 224 -64)
-	(pt 224 72)
-)
-(connector
-	(pt 304 -224)
-	(pt 304 -48)
-)
-(connector
-	(pt 304 -48)
-	(pt 304 72)
-)
-(connector
-	(pt 400 -208)
-	(pt 400 -32)
-)
-(connector
-	(pt 400 -32)
-	(pt 400 72)
-)
-(connector
-	(pt 488 -192)
-	(pt 488 -16)
-)
-(connector
-	(pt 488 -16)
-	(pt 488 72)
-)
-(connector
-	(pt 752 -176)
-	(pt 744 -176)
-)
-(connector
-	(pt 744 -160)
-	(pt 736 -160)
-)
-(connector
-	(pt 744 -176)
-	(pt 744 -160)
-)
-(connector
-	(pt 576 -168)
-	(pt 576 0)
+	(pt 744 -56)
+	(pt 744 -40)
 )
 (connector
 	(pt 576 0)
 	(pt 576 72)
 )
 (connector
-	(pt 656 -152)
-	(pt 656 16)
-)
-(connector
 	(pt 656 16)
 	(pt 656 72)
 )
 (connector
-	(pt 672 -168)
-	(pt 576 -168)
+	(pt 672 -48)
+	(pt 576 -48)
 )
 (connector
-	(pt 656 -152)
-	(pt 672 -152)
+	(pt 656 -32)
+	(pt 672 -32)
 )
 (connector
-	(pt 752 -192)
-	(pt 488 -192)
+	(pt 752 -72)
+	(pt 488 -72)
 )
 (connector
-	(pt 400 -208)
-	(pt 752 -208)
+	(pt 400 -88)
+	(pt 752 -88)
 )
 (connector
-	(pt 304 -224)
-	(pt 752 -224)
+	(pt 304 -104)
+	(pt 752 -104)
 )
 (connector
-	(pt 752 -240)
-	(pt 224 -240)
+	(pt 752 -120)
+	(pt 224 -120)
 )
 (connector
-	(pt 752 -256)
-	(pt 136 -256)
+	(pt 752 -136)
+	(pt 136 -136)
 )
 (connector
 	(pt -48 304)
@@ -1257,6 +1062,34 @@ on the Quartus Prime software download page.
 (connector
 	(pt -128 -16)
 	(pt -128 304)
+)
+(connector
+	(pt 576 -48)
+	(pt 576 0)
+)
+(connector
+	(pt 656 -32)
+	(pt 656 16)
+)
+(connector
+	(pt 488 -72)
+	(pt 488 72)
+)
+(connector
+	(pt 400 -88)
+	(pt 400 72)
+)
+(connector
+	(pt 304 -104)
+	(pt 304 72)
+)
+(connector
+	(pt 224 -120)
+	(pt 224 72)
+)
+(connector
+	(pt 136 -136)
+	(pt 136 72)
 )
 (junction (pt 88 144))
 (junction (pt 176 144))
@@ -1287,8 +1120,3 @@ on the Quartus Prime software download page.
 (junction (pt 576 240))
 (junction (pt 576 160))
 (junction (pt 88 -16))
-(junction (pt 136 -80))
-(junction (pt 224 -64))
-(junction (pt 304 -48))
-(junction (pt 400 -32))
-(junction (pt 488 -16))

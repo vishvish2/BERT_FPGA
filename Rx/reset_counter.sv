@@ -3,7 +3,7 @@ module reset_counter #(
 ) (
     input  clk,               // Clock
     input  rstn,              // Active-low synchronous reset
-    output reg [47:0] out,      // 7-bit counter output
+    output reg [47:0] out,      // counter output
 	 output reset
 );
 
