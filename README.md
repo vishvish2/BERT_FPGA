@@ -12,3 +12,5 @@ To view the Quartus Prime designs for each:
 - Open `Rx/BERT_Rx.qpf` to view the design for the receiver
 
 The FPGA board used was a DE0-Nano Altera board with the EP4CE22F17C6 FPGA chip.
+
+The folder `PCB` contains the KiCad design files for the comparator circuit used for transmitting a bitstream between the transmitter and receiver FPGAs.
